@@ -23,6 +23,24 @@
       "description": "Abstract industrial gold texture",
       "imageUrl": "https://picsum.photos/seed/industrial-gold/1200/800",
       "imageHint": "gold metal"
+    },
+    {
+      "id": "tech-platform",
+      "description": "Mobile app tracking interface",
+      "imageUrl": "https://picsum.photos/seed/app-track/1200/800",
+      "imageHint": "mobile logistics app"
+    },
+    {
+      "id": "timeline-bg",
+      "description": "Abstract timeline dots",
+      "imageUrl": "https://picsum.photos/seed/timeline/1200/800",
+      "imageHint": "abstract connectivity"
+    },
+    {
+      "id": "corporate-meeting",
+      "description": "Professional handshake",
+      "imageUrl": "https://picsum.photos/seed/business/1200/800",
+      "imageHint": "business partnership"
     }
   ]
 }
