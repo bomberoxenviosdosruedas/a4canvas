@@ -40,14 +40,15 @@
   .a4-page {
     width: 210mm;
     height: 297mm;
-    margin: 20px auto;
-    background-color: hsl(var(--card));
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    margin: 40px auto;
+    background-color: #0f172a;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     padding: 20mm;
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   @media print {
@@ -65,19 +66,22 @@
       -webkit-print-color-adjust: exact !important;
       background-color: white !important;
       color: black !important;
+      border: none !important;
     }
     .no-print {
       display: none !important;
-    }
-    /* Estilos para que se vea bien en blanco al imprimir si es necesario */
-    .a4-page * {
-      border-color: #e2e8f0 !important;
     }
     .text-primary {
       color: #b45309 !important;
     }
     .bg-primary {
       background-color: #b45309 !important;
+    }
+    .text-foreground {
+      color: black !important;
+    }
+    .bg-secondary\/30 {
+      background-color: #f1f5f9 !important;
     }
   }
 
@@ -86,17 +90,42 @@
   }
 
   .translucent-slate {
-    background-color: rgba(30, 41, 59, 0.7);
-    backdrop-filter: blur(8px);
+    background-color: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
   }
 
   .tech-pattern {
-    background-image: radial-gradient(circle at 2px 2px, rgba(245, 158, 11, 0.05) 1px, transparent 0);
-    background-size: 24px 24px;
+    background-image: 
+      radial-gradient(circle at 2px 2px, rgba(245, 158, 11, 0.08) 1px, transparent 0),
+      linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95));
+    background-size: 30px 30px, 100% 100%;
   }
 
-  .clip-path-oblique {
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+  .scanline {
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(0, 0, 0, 0.05) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .clip-path-hex {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  }
+
+  .corner-accent {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid hsl(var(--primary));
   }
 }
 

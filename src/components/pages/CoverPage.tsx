@@ -9,98 +9,96 @@ export const CoverPage = ({ pageNumber, totalPageCount }: { pageNumber: number, 
 
   return (
     <A4Page pageNumber={pageNumber} totalPageCount={totalPageCount} className="p-0 overflow-hidden bg-background tech-pattern">
-      <div className="relative h-full flex flex-col">
-        {/* Decorative Top Bar */}
-        <div className="h-2 bg-primary w-full logistics-glow" />
+      <div className="scanline opacity-10" />
+      
+      {/* Decorative Accents */}
+      <div className="absolute top-8 left-8 corner-accent border-r-0 border-b-0" />
+      <div className="absolute top-8 right-8 corner-accent border-l-0 border-b-0" />
+      <div className="absolute bottom-16 left-8 corner-accent border-r-0 border-t-0" />
+      <div className="absolute bottom-16 right-8 corner-accent border-l-0 border-t-0" />
 
-        {/* Hero Section */}
-        <div className="relative h-[60%] w-full clip-path-oblique bg-secondary/30">
+      <div className="relative h-full flex flex-col">
+        {/* Header Ribbon */}
+        <div className="h-1 bg-gradient-to-r from-transparent via-primary to-transparent w-full logistics-glow" />
+
+        {/* Hero Area */}
+        <div className="relative h-[65%] w-full flex items-center justify-center">
           {bgImg && (
-            <Image 
-              src={bgImg.imageUrl} 
-              alt="Industrial background" 
-              fill 
-              className="object-cover opacity-30 mix-blend-overlay"
-              data-ai-hint={bgImg.imageHint}
-            />
+            <div className="absolute inset-0 z-0">
+              <Image 
+                src={bgImg.imageUrl} 
+                alt="Industrial background" 
+                fill 
+                className="object-cover opacity-20 grayscale"
+                data-ai-hint={bgImg.imageHint}
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+            </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-primary/5" />
           
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center">
+          <div className="relative z-10 flex flex-col items-center">
             <div className="mb-12 relative">
-              <div className="absolute -inset-8 bg-primary/10 blur-3xl rounded-full" />
-              <div className="w-32 h-32 relative logistics-glow">
-                <svg viewBox="0 0 100 100" className="w-full h-full fill-primary">
+              <div className="absolute -inset-12 bg-primary/20 blur-[100px] rounded-full animate-pulse" />
+              <div className="w-40 h-40 relative">
+                <svg viewBox="0 0 100 100" className="w-full h-full fill-primary drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">
                   <path d="M50 0L93.3 25V75L50 100L6.7 75V25L50 0Z" className="opacity-10" />
-                  <path d="M50 10L85 30V70L50 90L15 70V30L50 10Z" />
-                  <path d="M30 40 L50 30 L70 40 L70 60 L50 70 L30 60 Z" fill="white" className="opacity-80" />
+                  <path d="M50 12L83 31V69L50 88L17 69V31L50 12Z" />
+                  <path d="M35 45 L50 35 L65 45 L65 55 L50 65 L35 55 Z" fill="white" className="opacity-90" />
                 </svg>
               </div>
             </div>
             
-            <h1 className="font-headline text-7xl font-black tracking-tighter mb-2 text-primary leading-[0.9]">
-              ENVÍOS<br/>DOSRUEDAS
+            <h1 className="font-headline text-8xl font-black tracking-tighter text-center leading-[0.85] mb-4">
+              <span className="text-foreground">ENVÍOS</span><br/>
+              <span className="text-primary italic">DOSRUEDAS</span>
             </h1>
-            <div className="flex items-center gap-4 w-full justify-center mt-6">
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-              <p className="font-headline text-xs font-bold tracking-[0.4em] text-foreground uppercase opacity-80 whitespace-nowrap">
+            
+            <div className="flex items-center gap-6 mt-8">
+              <div className="h-px w-16 bg-primary/40" />
+              <p className="font-headline text-sm font-bold tracking-[0.6em] text-foreground/60 uppercase whitespace-nowrap">
                 ESTRATEGIA LOGÍSTICA URBANA
               </p>
-              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
+              <div className="h-px w-16 bg-primary/40" />
             </div>
           </div>
         </div>
 
-        {/* Main Info Block */}
-        <div className="flex-1 px-16 py-12 flex flex-col justify-between">
-          <div className="grid grid-cols-2 gap-12">
-            <div className="space-y-6">
+        {/* Footer Content Area */}
+        <div className="flex-1 bg-secondary/20 border-t border-white/5 px-16 py-12 flex flex-col justify-between">
+          <div className="grid grid-cols-2 gap-16">
+            <div className="space-y-8">
               <div>
-                <p className="text-[10px] font-headline font-bold text-primary uppercase tracking-widest mb-2">Cliente Preferente</p>
-                <h2 className="text-3xl font-headline font-bold leading-tight">Corporativo Express S.A.</h2>
-                <p className="text-sm text-muted-foreground font-body mt-1">División de Operaciones Metropolitanas</p>
-              </div>
-              
-              <div className="flex gap-10">
-                <div>
-                  <p className="text-[9px] font-headline text-muted-foreground uppercase tracking-widest">Documento</p>
-                  <p className="text-sm font-bold font-headline uppercase">PROP-2025-V4</p>
-                </div>
-                <div>
-                  <p className="text-[9px] font-headline text-muted-foreground uppercase tracking-widest">Estado</p>
-                  <p className="text-sm font-bold font-headline text-primary uppercase">Confidencial</p>
-                </div>
+                <p className="text-[10px] font-headline font-bold text-primary uppercase tracking-[0.3em] mb-3">Cliente Preferente</p>
+                <h2 className="text-4xl font-headline font-bold leading-none tracking-tight">Corporativo Express S.A.</h2>
+                <div className="h-1 w-12 bg-primary mt-4" />
+                <p className="text-sm text-muted-foreground font-body mt-4">División de Operaciones Metropolitanas</p>
               </div>
             </div>
 
-            <div className="relative">
-              <div className="absolute -inset-1 bg-primary/20 blur-xl opacity-30" />
-              <div className="relative aspect-square rounded-xl overflow-hidden border-2 border-primary/20 shadow-2xl">
-                {bikeImg && (
-                   <Image 
-                     src={bikeImg.imageUrl} 
-                     alt="Delivery focus" 
-                     fill 
-                     className="object-cover"
-                     data-ai-hint={bikeImg.imageHint}
-                   />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-                <div className="absolute bottom-4 left-4">
-                  <p className="text-[10px] font-headline font-bold text-white uppercase tracking-widest">Vista Operativa</p>
-                </div>
+            <div className="flex flex-col justify-center items-end text-right">
+              <div className="mb-6">
+                <p className="text-[9px] font-headline text-primary uppercase tracking-widest mb-1">CÓDIGO DE DOCUMENTO</p>
+                <p className="text-xl font-black font-headline tracking-tighter">PROP-2025-EDR-V4</p>
+              </div>
+              <div>
+                <p className="text-[9px] font-headline text-muted-foreground uppercase tracking-widest mb-1">FECHA DE EMISIÓN</p>
+                <p className="text-lg font-bold font-headline">NOVIEMBRE 2025</p>
               </div>
             </div>
           </div>
 
-          <div className="flex justify-between items-end border-t border-white/5 pt-8">
-            <div className="text-[9px] font-headline text-muted-foreground/60 leading-relaxed max-w-[200px]">
-              ESTE DOCUMENTO CONTIENE INFORMACIÓN PROPIETARIA DE ENVÍOS DOSRUEDAS Y NO PUEDE SER REPRODUCIDO SIN AUTORIZACIÓN.
+          <div className="flex justify-between items-center border-t border-white/5 pt-10">
+            <div className="flex items-center gap-4">
+               <div className="w-10 h-10 border border-primary/20 rounded flex items-center justify-center font-headline font-black text-primary text-xs">
+                 HQ
+               </div>
+               <p className="text-[9px] font-headline text-muted-foreground leading-tight max-w-[250px] uppercase tracking-wider">
+                 ESTA PROPUESTA ES PROPIEDAD INTELECTUAL DE ENVÍOS DOSRUEDAS. CONFIDENCIALIDAD NIVEL 4 REQUERIDA.
+               </p>
             </div>
-            <div className="flex flex-col items-end">
-              <p className="text-xs font-headline font-medium text-primary mb-1">EMITIDO POR</p>
-              <p className="text-lg font-headline font-bold tracking-tight">DEPTO. ESTRATEGIA</p>
-              <p className="text-[10px] text-muted-foreground">NOVIEMBRE 2025</p>
+            <div className="text-right">
+              <p className="text-[10px] font-headline font-bold text-primary mb-1">VALIDEZ 30 DÍAS</p>
+              <p className="text-xs font-headline font-black uppercase opacity-60">SISTEMA DINÁMICO v4.0.2</p>
             </div>
           </div>
         </div>
