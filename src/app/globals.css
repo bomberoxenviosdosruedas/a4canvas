@@ -24,6 +24,12 @@
     --input: 208 34% 21%;
     --ring: 45 100% 49%;
     --radius: 0.125rem;
+
+    /* Custom Palette from HTML */
+    --on-surface-variant: 41 34% 75%;
+    --surface-container: 205 60% 12%;
+    --primary-container: 45 100% 51%;
+    --outline-variant: 42 22% 26%;
   }
 }
 
@@ -41,14 +47,14 @@
     width: 210mm;
     height: 297mm;
     margin: 40px auto;
-    background-color: hsl(var(--background));
+    background-color: #011525;
     box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     padding: 15mm;
-    border: 1px solid rgba(250, 189, 0, 0.15);
+    border: 1px solid rgba(250, 189, 0, 0.1);
   }
 
   .map-bg {
@@ -60,7 +66,7 @@
   }
 
   .industrial-card-glow {
-    box-shadow: 0 0 25px rgba(250, 189, 0, 0.08);
+    box-shadow: 0 0 25px rgba(255, 193, 7, 0.1);
     @apply bg-card/80 backdrop-blur-sm border border-primary/20 rounded-xl;
   }
 
@@ -77,20 +83,13 @@
       height: 297mm !important;
       print-color-adjust: exact !important;
       -webkit-print-color-adjust: exact !important;
-      background-color: white !important;
-      color: black !important;
+      background-color: #011525 !important;
+      color: white !important;
       border: none !important;
     }
     .no-print {
       display: none !important;
     }
-    .map-bg {
-      display: none !important;
-    }
-  }
-
-  .text-shadow-gold {
-    text-shadow: 0 0 10px rgba(250, 189, 0, 0.4);
   }
 
   .font-headline { font-family: 'Montserrat', sans-serif; }

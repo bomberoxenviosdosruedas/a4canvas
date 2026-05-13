@@ -2,37 +2,13 @@
 
 import React, { useState } from 'react';
 import { CoverPage } from '@/components/pages/CoverPage';
-import { LogisticsInfoPage } from '@/components/pages/LogisticsInfoPage';
-import { PricingPage } from '@/components/pages/PricingPage';
-import { PhilosophyPage } from '@/components/pages/PhilosophyPage';
-import { InfrastructurePage } from '@/components/pages/InfrastructurePage';
-import { TechnologyPage } from '@/components/pages/TechnologyPage';
-import { TimelinePage } from '@/components/pages/TimelinePage';
-import { ClosurePage } from '@/components/pages/ClosurePage';
 import { Button } from '@/components/ui/button';
-import { Printer, Package, ChevronDown } from 'lucide-react';
-
-type PageType = 'cover' | 'philosophy' | 'info' | 'nodes' | 'tech' | 'pricing' | 'timeline' | 'closure';
-
-interface ProposalPage {
-  id: string;
-  type: PageType;
-  title: string;
-}
+import { Printer, Package } from 'lucide-react';
 
 export default function A4CanvasApp() {
-  const [pages] = useState<ProposalPage[]>([
+  // Focus only on Page 1 for now as requested
+  const [pages] = useState([
     { id: 'p1', type: 'cover', title: 'Portada Operativa' },
-    { id: 'p2', type: 'philosophy', title: 'Identidad Corporativa' },
-    { id: 'p3', type: 'info', title: 'Propuesta de Valor' },
-    { id: 'p4', type: 'nodes', title: 'Infraestructura Local' },
-    { id: 'p5', type: 'info', title: 'Metodología Ágil' },
-    { id: 'p6', type: 'tech', title: 'Tecnología Predictiva' },
-    { id: 'p7', type: 'info', title: 'Calidad y SLA' },
-    { id: 'p8', type: 'pricing', title: 'Resumen de Inversión' },
-    { id: 'p9', type: 'timeline', title: 'Cronograma de Despliegue' },
-    { id: 'p10', type: 'info', title: 'Escalabilidad y Futuro' },
-    { id: 'p11', type: 'closure', title: 'Cierre de Alianza' }
   ]);
 
   const handlePrint = () => {
@@ -40,68 +16,51 @@ export default function A4CanvasApp() {
   };
 
   return (
-    <div className="min-h-screen bg-background pb-20 overflow-x-hidden selection:bg-primary selection:text-background">
+    <div className="min-h-screen bg-[#000f1d] pb-20 overflow-x-hidden selection:bg-[#ffc107] selection:text-[#011525]">
       {/* Navigation Header */}
-      <nav className="fixed top-0 left-0 right-0 h-20 bg-background/80 backdrop-blur-xl z-50 border-b border-primary/20 px-8 flex items-center justify-between no-print">
+      <nav className="fixed top-0 left-0 right-0 h-20 bg-[#011525]/80 backdrop-blur-xl z-50 border-b border-[#ffc107]/20 px-8 flex items-center justify-between no-print">
         <div className="flex items-center gap-6">
-          <div className="bg-primary p-2.5 rounded-lg shadow-[0_0_20px_rgba(250,189,0,0.3)]">
-            <Package className="text-background w-6 h-6" />
+          <div className="bg-[#ffc107] p-2.5 rounded-lg shadow-[0_0_20px_rgba(255,193,7,0.3)]">
+            <Package className="text-[#011525] w-6 h-6" />
           </div>
           <div>
             <h1 className="font-headline font-black text-xl tracking-tighter text-white uppercase italic">
-              EDR <span className="text-primary">CORE</span>
+              EDR <span className="text-[#ffc107]">CORE</span>
             </h1>
             <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              <p className="text-[10px] text-primary/80 uppercase tracking-[0.4em] font-bold font-mono">Propuesta 11 Páginas / 2026</p>
+              <div className="w-1.5 h-1.5 rounded-full bg-[#ffc107] animate-pulse" />
+              <p className="text-[10px] text-[#ffc107]/80 uppercase tracking-[0.4em] font-bold font-mono">Página 1 de 11 / 2026</p>
             </div>
           </div>
         </div>
 
         <div className="flex items-center gap-6">
-          <div className="hidden md:flex flex-col items-end">
-             <span className="text-[9px] font-mono text-muted-foreground uppercase tracking-widest">Estado del Documento</span>
-             <span className="text-xs font-bold text-primary uppercase">Versión Final - Corporativo</span>
-          </div>
           <Button 
             variant="default" 
             size="lg" 
-            className="bg-primary hover:bg-primary/90 text-background font-black shadow-2xl shadow-primary/30 px-8 h-11 uppercase tracking-[0.2em] text-xs rounded-none"
+            className="bg-[#ffc107] hover:bg-[#ffc107]/90 text-[#011525] font-black shadow-2xl shadow-[#ffc107]/30 px-8 h-11 uppercase tracking-[0.2em] text-xs rounded-none transition-all"
             onClick={handlePrint}
           >
             <Printer className="w-4 h-4 mr-3" />
-            Exportar PDF
+            Exportar Portada
           </Button>
         </div>
       </nav>
 
-      {/* Hero Hint (No-Print) */}
-      <div className="no-print pt-32 pb-10 flex flex-col items-center justify-center opacity-50">
-         <p className="text-xs font-mono uppercase tracking-[0.5em] text-primary mb-4">Visualización de Canvas A4</p>
-         <ChevronDown className="animate-bounce w-5 h-5 text-primary" />
-      </div>
-
       {/* Pages Container */}
-      <main className="flex flex-col items-center gap-20">
+      <main className="flex flex-col items-center pt-32">
         {pages.map((page, index) => (
-          <div key={page.id} className="relative group/page">
-            {page.type === 'cover' && <CoverPage pageNumber={index + 1} totalPageCount={pages.length} />}
-            {page.type === 'philosophy' && <PhilosophyPage pageNumber={index + 1} totalPageCount={pages.length} />}
-            {page.type === 'info' && <LogisticsInfoPage pageNumber={index + 1} totalPageCount={pages.length} />}
-            {page.type === 'nodes' && <InfrastructurePage pageNumber={index + 1} totalPageCount={pages.length} />}
-            {page.type === 'tech' && <TechnologyPage pageNumber={index + 1} totalPageCount={pages.length} />}
-            {page.type === 'pricing' && <PricingPage pageNumber={index + 1} totalPageCount={pages.length} />}
-            {page.type === 'timeline' && <TimelinePage pageNumber={index + 1} totalPageCount={pages.length} />}
-            {page.type === 'closure' && <ClosurePage pageNumber={index + 1} totalPageCount={pages.length} />}
+          <div key={page.id} className="relative">
+            {page.type === 'cover' && <CoverPage pageNumber={index + 1} totalPageCount={11} />}
           </div>
         ))}
       </main>
 
       {/* Global Status Float (No-Print) */}
       <div className="fixed bottom-10 left-10 no-print pointer-events-none opacity-80 z-50">
-        <div className="text-[10px] font-mono font-bold text-primary border border-primary/40 px-6 py-3 bg-background/90 backdrop-blur-lg shadow-2xl flex items-center gap-4">
-          <div className="w-2 h-2 rounded-full bg-primary animate-ping" />
-          <span className="uppercase tracking-[0.2em]">SISTEMA DE LOGÍSTICA URBANA v4.0 - EDR HQ</span>
+        <div className="text-[10px] font-mono font-bold text-[#ffc107] border border-[#ffc107]/40 px-6 py-3 bg-[#011525]/90 backdrop-blur-lg shadow-2xl flex items-center gap-4">
+          <div className="w-2 h-2 rounded-full bg-[#ffc107] animate-ping" />
+          <span className="uppercase tracking-[0.2em]">EDR v4.0 - SISTEMA CANVAS</span>
         </div>
       </div>
     </div>
