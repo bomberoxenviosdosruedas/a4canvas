@@ -5,6 +5,7 @@ import { CoverPage } from '@/components/pages/CoverPage';
 import { ExpressServicePage } from '@/components/pages/ExpressServicePage';
 import { LowcostServicePage } from '@/components/pages/LowcostServicePage';
 import { FlexServicePage } from '@/components/pages/FlexServicePage';
+import { EcommerceServicePage } from '@/components/pages/EcommerceServicePage';
 import { Button } from '@/components/ui/button';
 import { Printer, Package } from 'lucide-react';
 
@@ -14,6 +15,7 @@ export default function A4CanvasApp() {
     { id: 'p2', type: 'express' },
     { id: 'p3', type: 'lowcost' },
     { id: 'p4', type: 'flex' },
+    { id: 'p5', type: 'ecommerce' },
   ]);
 
   const handlePrint = () => {
@@ -60,6 +62,7 @@ export default function A4CanvasApp() {
             {page.type === 'express' && <ExpressServicePage pageNumber={index + 1} totalPageCount={11} />}
             {page.type === 'lowcost' && <LowcostServicePage pageNumber={index + 1} totalPageCount={11} />}
             {page.type === 'flex' && <FlexServicePage pageNumber={index + 1} totalPageCount={11} />}
+            {page.type === 'ecommerce' && <EcommerceServicePage pageNumber={index + 1} totalPageCount={11} />}
           </div>
         ))}
       </main>
