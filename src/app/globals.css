@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 14%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 38 92% 50%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 38 92% 50%;
-    --accent-foreground: 210 40% 98%;
+    --background: 207 95% 7%;
+    --foreground: 211 88% 90%;
+    --card: 206 61% 12%;
+    --card-foreground: 211 88% 90%;
+    --popover: 207 95% 7%;
+    --popover-foreground: 211 88% 90%;
+    --primary: 45 100% 49%;
+    --primary-foreground: 207 95% 10%;
+    --secondary: 212 55% 80%;
+    --secondary-foreground: 207 95% 20%;
+    --muted: 208 34% 21%;
+    --muted-foreground: 211 30% 70%;
+    --accent: 45 100% 84%;
+    --accent-foreground: 207 95% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 38 92% 50%;
-    --radius: 0.5rem;
+    --border: 39 15% 54%;
+    --input: 208 34% 21%;
+    --ring: 45 100% 49%;
+    --radius: 0.125rem;
   }
 }
 
@@ -32,7 +32,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
   }
 }
 
@@ -41,14 +41,27 @@
     width: 210mm;
     height: 297mm;
     margin: 40px auto;
-    background-color: #0f172a;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    background-color: hsl(var(--background));
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    padding: 20mm;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15mm;
+    border: 1px solid rgba(250, 189, 0, 0.15);
+  }
+
+  .map-bg {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCyD6Oh5Rs6AFIchpcxFfQgsyhqxxPPh4KFx2n8r-rX_7zxoNrkK64vgcKcTlVZBeBNxYrlnq4o2tD1p3y2ApmcXbkKV1Y0ccHqD8zRHK8g3-RfEksW626xw6sKvQqAMEJoxtegKikhTqTwHvYoo4xVZ_hVb0IBBzdV7lmh-aFDMYCei_BaudxSVo8R445pHeQKx6r_pEnJbASbLPCtcIKeYx7vzsr9IZ2r-GQ2XXur_x_NeGfgWKjmIoWZlHBvNnHUO0xxa5_kNjIG);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    @apply absolute inset-0 z-0 opacity-10;
+  }
+
+  .industrial-card-glow {
+    box-shadow: 0 0 25px rgba(250, 189, 0, 0.08);
+    @apply bg-card/80 backdrop-blur-sm border border-primary/20 rounded-xl;
   }
 
   @media print {
@@ -71,66 +84,16 @@
     .no-print {
       display: none !important;
     }
-    .text-primary {
-      color: #b45309 !important;
-    }
-    .bg-primary {
-      background-color: #b45309 !important;
-    }
-    .text-foreground {
-      color: black !important;
-    }
-    .bg-secondary\/30 {
-      background-color: #f1f5f9 !important;
+    .map-bg {
+      display: none !important;
     }
   }
 
-  .logistics-glow {
-    @apply animate-glow-pulse;
+  .text-shadow-gold {
+    text-shadow: 0 0 10px rgba(250, 189, 0, 0.4);
   }
 
-  .translucent-slate {
-    background-color: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(12px);
-  }
-
-  .tech-pattern {
-    background-image: 
-      radial-gradient(circle at 2px 2px, rgba(245, 158, 11, 0.08) 1px, transparent 0),
-      linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95));
-    background-size: 30px 30px, 100% 100%;
-  }
-
-  .scanline {
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0) 50%,
-        rgba(0, 0, 0, 0.05) 50%
-    );
-    background-size: 100% 4px;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .clip-path-hex {
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-  }
-
-  .corner-accent {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 2px solid hsl(var(--primary));
-  }
-}
-
-@layer utilities {
-  .animate-glow-pulse {
-    animation: glow-pulse 3s infinite ease-in-out;
-  }
+  .font-headline { font-family: 'Montserrat', sans-serif; }
+  .font-body { font-family: 'Manrope', sans-serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
 }

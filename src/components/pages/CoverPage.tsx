@@ -1,107 +1,68 @@
 import React from 'react';
 import { A4Page } from '@/components/A4Page';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import Image from 'next/image';
+import { Package } from 'lucide-react';
 
 export const CoverPage = ({ pageNumber, totalPageCount }: { pageNumber: number, totalPageCount: number }) => {
-  const bgImg = PlaceHolderImages.find(img => img.id === 'logo-background');
-  const bikeImg = PlaceHolderImages.find(img => img.id === 'logistics-bike');
-
   return (
-    <A4Page pageNumber={pageNumber} totalPageCount={totalPageCount} className="p-0 overflow-hidden bg-background tech-pattern">
-      <div className="scanline opacity-10" />
-      
-      {/* Decorative Accents */}
-      <div className="absolute top-8 left-8 corner-accent border-r-0 border-b-0" />
-      <div className="absolute top-8 right-8 corner-accent border-l-0 border-b-0" />
-      <div className="absolute bottom-16 left-8 corner-accent border-r-0 border-t-0" />
-      <div className="absolute bottom-16 right-8 corner-accent border-l-0 border-t-0" />
-
-      <div className="relative h-full flex flex-col">
+    <A4Page pageNumber={pageNumber} totalPageCount={totalPageCount} className="p-0">
+      <div className="relative h-full flex flex-col px-12 md:px-16">
+        
         {/* Header Ribbon */}
-        <div className="h-1 bg-gradient-to-r from-transparent via-primary to-transparent w-full logistics-glow" />
-
-        {/* Hero Area */}
-        <div className="relative h-[65%] w-full flex items-center justify-center">
-          {bgImg && (
-            <div className="absolute inset-0 z-0">
-              <Image 
-                src={bgImg.imageUrl} 
-                alt="Industrial background" 
-                fill 
-                className="object-cover opacity-20 grayscale"
-                data-ai-hint={bgImg.imageHint}
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+        <header className="flex justify-between items-center w-full py-12 border-b border-white/5">
+          <div className="flex items-center gap-5">
+            <div className="w-16 h-16 rounded-full border-2 border-primary p-1 bg-background flex items-center justify-center relative shadow-[0_0_20px_rgba(250,189,0,0.2)]">
+              <div className="font-headline font-black text-primary italic leading-none text-center text-[10px]">
+                ENVÍOS<br/>DOSRUEDAS
+              </div>
             </div>
-          )}
+            <div className="flex flex-col">
+              <h1 className="font-headline text-3xl font-black italic tracking-tighter text-white leading-none">ENVÍOS</h1>
+              <h1 className="font-headline text-3xl font-black italic tracking-tighter text-primary leading-none">DOSRUEDAS</h1>
+              <div className="mt-2 bg-primary text-background font-bold px-3 py-0.5 rounded-sm text-[10px] tracking-widest uppercase self-start">
+                LOGÍSTICA CORPORATIVA
+              </div>
+            </div>
+          </div>
+          <Package className="text-primary w-10 h-10 opacity-80" />
+        </header>
+
+        {/* Hero Section */}
+        <main className="flex-grow flex flex-col items-center justify-center text-center">
+          <h2 className="font-headline text-5xl font-black text-white uppercase tracking-tight mb-2">PARTNER LOGÍSTICO</h2>
+          <h2 className="font-headline text-5xl font-black text-primary uppercase tracking-tight mb-6 text-shadow-gold">ESPECIALIZADO</h2>
+          <p className="font-body text-xl text-muted-foreground italic mb-10">El Motor de su Última Milla</p>
           
-          <div className="relative z-10 flex flex-col items-center">
-            <div className="mb-12 relative">
-              <div className="absolute -inset-12 bg-primary/20 blur-[100px] rounded-full animate-pulse" />
-              <div className="w-40 h-40 relative">
-                <svg viewBox="0 0 100 100" className="w-full h-full fill-primary drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]">
-                  <path d="M50 0L93.3 25V75L50 100L6.7 75V25L50 0Z" className="opacity-10" />
-                  <path d="M50 12L83 31V69L50 88L17 69V31L50 12Z" />
-                  <path d="M35 45 L50 35 L65 45 L65 55 L50 65 L35 55 Z" fill="white" className="opacity-90" />
-                </svg>
-              </div>
-            </div>
-            
-            <h1 className="font-headline text-8xl font-black tracking-tighter text-center leading-[0.85] mb-4">
-              <span className="text-foreground">ENVÍOS</span><br/>
-              <span className="text-primary italic">DOSRUEDAS</span>
-            </h1>
-            
-            <div className="flex items-center gap-6 mt-8">
-              <div className="h-px w-16 bg-primary/40" />
-              <p className="font-headline text-sm font-bold tracking-[0.6em] text-foreground/60 uppercase whitespace-nowrap">
-                ESTRATEGIA LOGÍSTICA URBANA
-              </p>
-              <div className="h-px w-16 bg-primary/40" />
-            </div>
+          <div className="border border-primary/30 rounded-full px-8 py-2.5 bg-background/40 backdrop-blur-md mb-16 shadow-[0_0_15px_rgba(250,189,0,0.1)]">
+            <span className="text-primary font-mono text-xs font-bold tracking-widest uppercase">Cobertura Integral en Mar del Plata</span>
           </div>
-        </div>
 
-        {/* Footer Content Area */}
-        <div className="flex-1 bg-secondary/20 border-t border-white/5 px-16 py-12 flex flex-col justify-between">
-          <div className="grid grid-cols-2 gap-16">
+          <div className="w-full industrial-card-glow p-10 text-left">
+            <h3 className="font-headline text-xl text-primary font-bold uppercase mb-8 text-center tracking-widest border-b border-primary/10 pb-4">7 AÑOS INNOVANDO EN LA CIUDAD</h3>
             <div className="space-y-8">
-              <div>
-                <p className="text-[10px] font-headline font-bold text-primary uppercase tracking-[0.3em] mb-3">Cliente Preferente</p>
-                <h2 className="text-4xl font-headline font-bold leading-none tracking-tight">Corporativo Express S.A.</h2>
-                <div className="h-1 w-12 bg-primary mt-4" />
-                <p className="text-sm text-muted-foreground font-body mt-4">División de Operaciones Metropolitanas</p>
+              <div className="flex gap-6 items-start">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <p className="font-body text-sm leading-relaxed text-muted-foreground">
+                  Nacimos en Mar del Plata y llevamos más de 7 años operando, creciendo e innovando de manera constante. Brindamos un servicio logístico de excelencia y confianza.
+                </p>
               </div>
-            </div>
-
-            <div className="flex flex-col justify-center items-end text-right">
-              <div className="mb-6">
-                <p className="text-[9px] font-headline text-primary uppercase tracking-widest mb-1">CÓDIGO DE DOCUMENTO</p>
-                <p className="text-xl font-black font-headline tracking-tighter">PROP-2025-EDR-V4</p>
+              <div className="flex gap-6 items-start">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <p className="font-body text-sm leading-relaxed text-muted-foreground">
+                  Especialistas en la logística de última milla para <strong className="text-white">E-Commerce, plataformas y pymes</strong>. Somos el <strong className="text-white">partner logístico de referencia</strong>.
+                </p>
               </div>
-              <div>
-                <p className="text-[9px] font-headline text-muted-foreground uppercase tracking-widest mb-1">FECHA DE EMISIÓN</p>
-                <p className="text-lg font-bold font-headline">NOVIEMBRE 2025</p>
+              <div className="flex gap-6 items-start">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <p className="font-body text-sm leading-relaxed text-muted-foreground">
+                  Nos integramos a su operación como un aliado estratégico, para que usted se enfoque en escalar sus ventas con seguridad total.
+                </p>
               </div>
             </div>
           </div>
+        </main>
 
-          <div className="flex justify-between items-center border-t border-white/5 pt-10">
-            <div className="flex items-center gap-4">
-               <div className="w-10 h-10 border border-primary/20 rounded flex items-center justify-center font-headline font-black text-primary text-xs">
-                 HQ
-               </div>
-               <p className="text-[9px] font-headline text-muted-foreground leading-tight max-w-[250px] uppercase tracking-wider">
-                 ESTA PROPUESTA ES PROPIEDAD INTELECTUAL DE ENVÍOS DOSRUEDAS. CONFIDENCIALIDAD NIVEL 4 REQUERIDA.
-               </p>
-            </div>
-            <div className="text-right">
-              <p className="text-[10px] font-headline font-bold text-primary mb-1">VALIDEZ 30 DÍAS</p>
-              <p className="text-xs font-headline font-black uppercase opacity-60">SISTEMA DINÁMICO v4.0.2</p>
-            </div>
-          </div>
-        </div>
+        {/* Spacer for Page Footer */}
+        <div className="h-20" />
       </div>
     </A4Page>
   );

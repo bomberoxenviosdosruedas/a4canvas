@@ -1,17 +1,16 @@
-
 "use client";
 
 import React, { useState } from 'react';
 import { CoverPage } from '@/components/pages/CoverPage';
 import { LogisticsInfoPage } from '@/components/pages/LogisticsInfoPage';
 import { PricingPage } from '@/components/pages/PricingPage';
-import { Button } from '@/components/ui/button';
-import { Printer, Sparkles, Layers, FileText } from 'lucide-react';
 import { PhilosophyPage } from '@/components/pages/PhilosophyPage';
 import { InfrastructurePage } from '@/components/pages/InfrastructurePage';
 import { TechnologyPage } from '@/components/pages/TechnologyPage';
 import { TimelinePage } from '@/components/pages/TimelinePage';
 import { ClosurePage } from '@/components/pages/ClosurePage';
+import { Button } from '@/components/ui/button';
+import { Printer, Package, ChevronDown } from 'lucide-react';
 
 type PageType = 'cover' | 'philosophy' | 'info' | 'nodes' | 'tech' | 'pricing' | 'timeline' | 'closure';
 
@@ -23,17 +22,17 @@ interface ProposalPage {
 
 export default function A4CanvasApp() {
   const [pages] = useState<ProposalPage[]>([
-    { id: 'p1', type: 'cover', title: 'Portada' },
-    { id: 'p2', type: 'philosophy', title: 'Filosofía' },
+    { id: 'p1', type: 'cover', title: 'Portada Operativa' },
+    { id: 'p2', type: 'philosophy', title: 'Identidad Corporativa' },
     { id: 'p3', type: 'info', title: 'Propuesta de Valor' },
-    { id: 'p4', type: 'nodes', title: 'Infraestructura' },
-    { id: 'p5', type: 'info', title: 'Metodología' },
-    { id: 'p6', type: 'tech', title: 'Tecnología' },
+    { id: 'p4', type: 'nodes', title: 'Infraestructura Local' },
+    { id: 'p5', type: 'info', title: 'Metodología Ágil' },
+    { id: 'p6', type: 'tech', title: 'Tecnología Predictiva' },
     { id: 'p7', type: 'info', title: 'Calidad y SLA' },
-    { id: 'p8', type: 'pricing', title: 'Inversión' },
-    { id: 'p9', type: 'timeline', title: 'Cronograma' },
-    { id: 'p10', type: 'info', title: 'Beneficios' },
-    { id: 'p11', type: 'closure', title: 'Cierre' }
+    { id: 'p8', type: 'pricing', title: 'Resumen de Inversión' },
+    { id: 'p9', type: 'timeline', title: 'Cronograma de Despliegue' },
+    { id: 'p10', type: 'info', title: 'Escalabilidad y Futuro' },
+    { id: 'p11', type: 'closure', title: 'Cierre de Alianza' }
   ]);
 
   const handlePrint = () => {
@@ -41,37 +40,49 @@ export default function A4CanvasApp() {
   };
 
   return (
-    <div className="min-h-screen bg-background pb-20 overflow-x-hidden">
+    <div className="min-h-screen bg-background pb-20 overflow-x-hidden selection:bg-primary selection:text-background">
       {/* Navigation Header */}
-      <nav className="fixed top-0 left-0 right-0 h-20 translucent-slate z-50 border-b border-white/10 px-8 flex items-center justify-between no-print">
+      <nav className="fixed top-0 left-0 right-0 h-20 bg-background/80 backdrop-blur-xl z-50 border-b border-primary/20 px-8 flex items-center justify-between no-print">
         <div className="flex items-center gap-6">
-          <div className="bg-primary p-2.5 rounded-xl logistics-glow">
-            <Layers className="text-background w-6 h-6" />
+          <div className="bg-primary p-2.5 rounded-lg shadow-[0_0_20px_rgba(250,189,0,0.3)]">
+            <Package className="text-background w-6 h-6" />
           </div>
           <div>
-            <h1 className="font-headline font-black text-xl tracking-tighter">A4 CANVAS <span className="text-primary italic">CORE</span></h1>
+            <h1 className="font-headline font-black text-xl tracking-tighter text-white uppercase italic">
+              EDR <span className="text-primary">CORE</span>
+            </h1>
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              <p className="text-[10px] text-primary/80 uppercase tracking-[0.3em] font-black">Propuesta Integral 11 Páginas</p>
+              <p className="text-[10px] text-primary/80 uppercase tracking-[0.4em] font-bold font-mono">Propuesta 11 Páginas / 2026</p>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
+          <div className="hidden md:flex flex-col items-end">
+             <span className="text-[9px] font-mono text-muted-foreground uppercase tracking-widest">Estado del Documento</span>
+             <span className="text-xs font-bold text-primary uppercase">Versión Final - Corporativo</span>
+          </div>
           <Button 
             variant="default" 
-            size="sm" 
-            className="bg-primary hover:bg-primary/90 text-background font-black shadow-2xl shadow-primary/30 px-6 h-10 uppercase tracking-widest text-xs"
+            size="lg" 
+            className="bg-primary hover:bg-primary/90 text-background font-black shadow-2xl shadow-primary/30 px-8 h-11 uppercase tracking-[0.2em] text-xs rounded-none"
             onClick={handlePrint}
           >
             <Printer className="w-4 h-4 mr-3" />
-            Imprimir Propuesta
+            Exportar PDF
           </Button>
         </div>
       </nav>
 
+      {/* Hero Hint (No-Print) */}
+      <div className="no-print pt-32 pb-10 flex flex-col items-center justify-center opacity-50">
+         <p className="text-xs font-mono uppercase tracking-[0.5em] text-primary mb-4">Visualización de Canvas A4</p>
+         <ChevronDown className="animate-bounce w-5 h-5 text-primary" />
+      </div>
+
       {/* Pages Container */}
-      <main className="pt-32 flex flex-col items-center gap-20">
+      <main className="flex flex-col items-center gap-20">
         {pages.map((page, index) => (
           <div key={page.id} className="relative group/page">
             {page.type === 'cover' && <CoverPage pageNumber={index + 1} totalPageCount={pages.length} />}
@@ -86,10 +97,11 @@ export default function A4CanvasApp() {
         ))}
       </main>
 
-      <div className="fixed bottom-10 left-10 no-print pointer-events-none opacity-50">
-        <div className="text-[10px] font-headline font-black text-primary border border-primary/30 px-6 py-3 rounded-full translucent-slate shadow-2xl flex items-center gap-3">
-          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span>PROYECTO: CORPORATIVO EXPRESS S.A. | VERSIÓN FINAL</span>
+      {/* Global Status Float (No-Print) */}
+      <div className="fixed bottom-10 left-10 no-print pointer-events-none opacity-80 z-50">
+        <div className="text-[10px] font-mono font-bold text-primary border border-primary/40 px-6 py-3 bg-background/90 backdrop-blur-lg shadow-2xl flex items-center gap-4">
+          <div className="w-2 h-2 rounded-full bg-primary animate-ping" />
+          <span className="uppercase tracking-[0.2em]">SISTEMA DE LOGÍSTICA URBANA v4.0 - EDR HQ</span>
         </div>
       </div>
     </div>
