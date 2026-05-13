@@ -8,73 +8,101 @@ export const CoverPage = ({ pageNumber, totalPageCount }: { pageNumber: number, 
   const bikeImg = PlaceHolderImages.find(img => img.id === 'logistics-bike');
 
   return (
-    <A4Page pageNumber={pageNumber} totalPageCount={totalPageCount} className="p-0 overflow-hidden bg-background">
+    <A4Page pageNumber={pageNumber} totalPageCount={totalPageCount} className="p-0 overflow-hidden bg-background tech-pattern">
       <div className="relative h-full flex flex-col">
-        {/* Top Hero Section with Slanted Cut */}
-        <div className="relative h-[65%] w-full clip-path-polygon">
+        {/* Decorative Top Bar */}
+        <div className="h-2 bg-primary w-full logistics-glow" />
+
+        {/* Hero Section */}
+        <div className="relative h-[60%] w-full clip-path-oblique bg-secondary/30">
           {bgImg && (
             <Image 
               src={bgImg.imageUrl} 
               alt="Industrial background" 
               fill 
-              className="object-cover opacity-40 brightness-50"
+              className="object-cover opacity-30 mix-blend-overlay"
               data-ai-hint={bgImg.imageHint}
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-transparent to-background" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-background via-transparent to-primary/5" />
           
           <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center">
-            <div className="w-24 h-24 mb-8 relative logistics-glow">
-              <svg viewBox="0 0 100 100" className="w-full h-full fill-primary">
-                <path d="M50 0L93.3 25V75L50 100L6.7 75V25L50 0Z" className="opacity-20" />
-                <path d="M50 15L80.3 32.5V67.5L50 85L19.7 67.5V32.5L50 15Z" />
-                <circle cx="50" cy="50" r="15" fill="none" stroke="currentColor" strokeWidth="4" />
-                <path d="M50 35V65M35 50H65" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-              </svg>
+            <div className="mb-12 relative">
+              <div className="absolute -inset-8 bg-primary/10 blur-3xl rounded-full" />
+              <div className="w-32 h-32 relative logistics-glow">
+                <svg viewBox="0 0 100 100" className="w-full h-full fill-primary">
+                  <path d="M50 0L93.3 25V75L50 100L6.7 75V25L50 0Z" className="opacity-10" />
+                  <path d="M50 10L85 30V70L50 90L15 70V30L50 10Z" />
+                  <path d="M30 40 L50 30 L70 40 L70 60 L50 70 L30 60 Z" fill="white" className="opacity-80" />
+                </svg>
+              </div>
             </div>
-            <h1 className="font-headline text-6xl font-black tracking-tighter mb-4 text-primary leading-none">
+            
+            <h1 className="font-headline text-7xl font-black tracking-tighter mb-2 text-primary leading-[0.9]">
               ENVÍOS<br/>DOSRUEDAS
             </h1>
-            <div className="h-1 w-32 bg-primary mb-6 mx-auto logistics-glow" />
-            <p className="font-headline text-2xl font-light tracking-widest text-foreground uppercase">
-              Propuesta de Estrategia Logística
-            </p>
-          </div>
-        </div>
-
-        {/* Bottom Content Section */}
-        <div className="flex-1 p-12 flex flex-col justify-end">
-          <div className="grid grid-cols-2 gap-8 items-end">
-            <div>
-              <h2 className="font-headline text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">Preparado para</h2>
-              <div className="translucent-slate p-6 border-l-4 border-primary rounded-r-lg">
-                <p className="text-xl font-headline font-semibold mb-1">Corporativo Express S.A.</p>
-                <p className="text-muted-foreground text-sm font-body">División de Distribución Urbana</p>
-              </div>
-            </div>
-            <div className="text-right">
-              <p className="text-xs text-muted-foreground uppercase tracking-widest mb-1 font-headline">Fecha de emisión</p>
-              <p className="text-lg font-headline font-medium">Noviembre 2025</p>
-              <div className="mt-4 flex justify-end gap-2">
-                 <span className="w-3 h-3 bg-primary/40 rounded-full" />
-                 <span className="w-3 h-3 bg-primary/60 rounded-full" />
-                 <span className="w-3 h-3 bg-primary rounded-full logistics-glow" />
-              </div>
+            <div className="flex items-center gap-4 w-full justify-center mt-6">
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
+              <p className="font-headline text-xs font-bold tracking-[0.4em] text-foreground uppercase opacity-80 whitespace-nowrap">
+                ESTRATEGIA LOGÍSTICA URBANA
+              </p>
+              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
             </div>
           </div>
         </div>
 
-        {/* Float Image Decor */}
-        <div className="absolute top-[50%] right-12 w-64 h-48 translate-y-[-50%] z-20 shadow-2xl rounded-lg overflow-hidden border-2 border-primary/30">
-          {bikeImg && (
-             <Image 
-               src={bikeImg.imageUrl} 
-               alt="Delivery focus" 
-               fill 
-               className="object-cover"
-               data-ai-hint={bikeImg.imageHint}
-             />
-          )}
+        {/* Main Info Block */}
+        <div className="flex-1 px-16 py-12 flex flex-col justify-between">
+          <div className="grid grid-cols-2 gap-12">
+            <div className="space-y-6">
+              <div>
+                <p className="text-[10px] font-headline font-bold text-primary uppercase tracking-widest mb-2">Cliente Preferente</p>
+                <h2 className="text-3xl font-headline font-bold leading-tight">Corporativo Express S.A.</h2>
+                <p className="text-sm text-muted-foreground font-body mt-1">División de Operaciones Metropolitanas</p>
+              </div>
+              
+              <div className="flex gap-10">
+                <div>
+                  <p className="text-[9px] font-headline text-muted-foreground uppercase tracking-widest">Documento</p>
+                  <p className="text-sm font-bold font-headline uppercase">PROP-2025-V4</p>
+                </div>
+                <div>
+                  <p className="text-[9px] font-headline text-muted-foreground uppercase tracking-widest">Estado</p>
+                  <p className="text-sm font-bold font-headline text-primary uppercase">Confidencial</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="absolute -inset-1 bg-primary/20 blur-xl opacity-30" />
+              <div className="relative aspect-square rounded-xl overflow-hidden border-2 border-primary/20 shadow-2xl">
+                {bikeImg && (
+                   <Image 
+                     src={bikeImg.imageUrl} 
+                     alt="Delivery focus" 
+                     fill 
+                     className="object-cover"
+                     data-ai-hint={bikeImg.imageHint}
+                   />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <p className="text-[10px] font-headline font-bold text-white uppercase tracking-widest">Vista Operativa</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-between items-end border-t border-white/5 pt-8">
+            <div className="text-[9px] font-headline text-muted-foreground/60 leading-relaxed max-w-[200px]">
+              ESTE DOCUMENTO CONTIENE INFORMACIÓN PROPIETARIA DE ENVÍOS DOSRUEDAS Y NO PUEDE SER REPRODUCIDO SIN AUTORIZACIÓN.
+            </div>
+            <div className="flex flex-col items-end">
+              <p className="text-xs font-headline font-medium text-primary mb-1">EMITIDO POR</p>
+              <p className="text-lg font-headline font-bold tracking-tight">DEPTO. ESTRATEGIA</p>
+              <p className="text-[10px] text-muted-foreground">NOVIEMBRE 2025</p>
+            </div>
+          </div>
         </div>
       </div>
     </A4Page>

@@ -1,17 +1,27 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { CoverPage } from '@/components/pages/CoverPage';
 import { LogisticsInfoPage } from '@/components/pages/LogisticsInfoPage';
+import { PricingPage } from '@/components/pages/PricingPage';
 import { ContentPage } from '@/components/pages/ContentPage';
 import { Button } from '@/components/ui/button';
-import { FileText, Printer, Sparkles, Plus, Trash2 } from 'lucide-react';
+import { FileText, Printer, Sparkles, Plus, Trash2, Layout } from 'lucide-react';
 import { aiLayoutOptimizer, AILayoutOptimizerOutput } from '@/ai/flows/ai-layout-optimizer';
 
+type PageType = 'cover' | 'info' | 'pricing' | 'ai';
+
+interface ProposalPage {
+  id: string;
+  type: PageType;
+  layout?: AILayoutOptimizerOutput;
+}
+
 export default function A4CanvasApp() {
-  const [pages, setPages] = useState<{ id: string, type: 'cover' | 'info' | 'ai', layout?: AILayoutOptimizerOutput }[]>([
+  const [pages, setPages] = useState<ProposalPage[]>([
     { id: '1', type: 'cover' },
-    { id: '2', type: 'info' }
+    { id: '2', type: 'info' },
+    { id: '3', type: 'pricing' }
   ]);
   const [optimizing, setOptimizing] = useState(false);
 
@@ -50,10 +60,10 @@ export default function A4CanvasApp() {
       <nav className="fixed top-0 left-0 right-0 h-16 translucent-slate z-50 border-b border-white/10 px-6 flex items-center justify-between no-print">
         <div className="flex items-center gap-4">
           <div className="bg-primary p-2 rounded-lg">
-            <FileText className="text-background w-5 h-5" />
+            <Layout className="text-background w-5 h-5" />
           </div>
           <div>
-            <h1 className="font-headline font-bold text-lg tracking-tight">A4 CANVAS</h1>
+            <h1 className="font-headline font-bold text-lg tracking-tight">A4 CANVAS <span className="text-primary italic">V4</span></h1>
             <p className="text-[10px] text-primary/80 uppercase tracking-widest font-bold">Logistics Theme Engine</p>
           </div>
         </div>
@@ -103,19 +113,29 @@ export default function A4CanvasApp() {
 
             {page.type === 'cover' && <CoverPage pageNumber={index + 1} totalPageCount={pages.length} />}
             {page.type === 'info' && <LogisticsInfoPage pageNumber={index + 1} totalPageCount={pages.length} />}
+            {page.type === 'pricing' && <PricingPage pageNumber={index + 1} totalPageCount={pages.length} />}
             {page.type === 'ai' && <ContentPage pageNumber={index + 1} totalPageCount={pages.length} layout={page.layout} />}
           </div>
         ))}
         
         {/* Add Page Button */}
-        <div className="py-8 no-print">
+        <div className="py-8 no-print flex gap-4">
            <Button 
             variant="ghost" 
-            className="text-muted-foreground hover:text-primary transition-all flex flex-col gap-4 h-auto py-8"
+            className="text-muted-foreground hover:text-primary transition-all flex flex-col gap-4 h-auto py-8 px-12 border-2 border-dashed border-muted/20 hover:border-primary/50"
             onClick={() => setPages([...pages, { id: Date.now().toString(), type: 'info' }])}
            >
-              <Plus className="w-12 h-12 stroke-[1px] border-2 border-dashed border-current rounded-full p-2" />
-              <span className="font-headline uppercase tracking-[0.2em] text-xs font-bold">Añadir Página Manual</span>
+              <Plus className="w-12 h-12 stroke-[1px] rounded-full p-2 border-2 border-dashed border-current" />
+              <span className="font-headline uppercase tracking-[0.2em] text-xs font-bold">Página de Texto</span>
+           </Button>
+           
+           <Button 
+            variant="ghost" 
+            className="text-muted-foreground hover:text-primary transition-all flex flex-col gap-4 h-auto py-8 px-12 border-2 border-dashed border-muted/20 hover:border-primary/50"
+            onClick={() => setPages([...pages, { id: Date.now().toString(), type: 'pricing' }])}
+           >
+              <Wallet className="w-12 h-12 stroke-[1px] rounded-full p-2 border-2 border-dashed border-current" />
+              <span className="font-headline uppercase tracking-[0.2em] text-xs font-bold">Página de Inversión</span>
            </Button>
         </div>
       </main>
@@ -123,9 +143,12 @@ export default function A4CanvasApp() {
       {/* Corporate Badge Overlay */}
       <div className="fixed bottom-8 left-8 no-print pointer-events-none opacity-40 hover:opacity-100 transition-opacity">
         <div className="text-[10px] font-headline font-bold text-primary border border-primary/20 px-4 py-2 rounded-full translucent-slate">
-          ENVÍOS DOSRUEDAS © 2025 | SISTEMA DE PROPUESTAS
+          ENVÍOS DOSRUEDAS © 2025 | SISTEMA DE PROPUESTAS DINÁMICAS
         </div>
       </div>
     </div>
   );
 }
+
+// Re-import Wallet icon used in buttons
+import { Wallet } from 'lucide-react';

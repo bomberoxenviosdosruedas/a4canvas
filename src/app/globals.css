@@ -52,20 +52,32 @@
 
   @media print {
     body {
-      background: none;
-      color: black;
+      background: none !important;
+      color: black !important;
     }
     .a4-page {
-      margin: 0;
-      box-shadow: none;
-      page-break-after: always;
-      width: 210mm;
-      height: 297mm;
-      print-color-adjust: exact;
-      -webkit-print-color-adjust: exact;
+      margin: 0 !important;
+      box-shadow: none !important;
+      page-break-after: always !important;
+      width: 210mm !important;
+      height: 297mm !important;
+      print-color-adjust: exact !important;
+      -webkit-print-color-adjust: exact !important;
+      background-color: white !important;
+      color: black !important;
     }
     .no-print {
       display: none !important;
+    }
+    /* Estilos para que se vea bien en blanco al imprimir si es necesario */
+    .a4-page * {
+      border-color: #e2e8f0 !important;
+    }
+    .text-primary {
+      color: #b45309 !important;
+    }
+    .bg-primary {
+      background-color: #b45309 !important;
     }
   }
 
@@ -76,5 +88,20 @@
   .translucent-slate {
     background-color: rgba(30, 41, 59, 0.7);
     backdrop-filter: blur(8px);
+  }
+
+  .tech-pattern {
+    background-image: radial-gradient(circle at 2px 2px, rgba(245, 158, 11, 0.05) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  .clip-path-oblique {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+  }
+}
+
+@layer utilities {
+  .animate-glow-pulse {
+    animation: glow-pulse 3s infinite ease-in-out;
   }
 }
