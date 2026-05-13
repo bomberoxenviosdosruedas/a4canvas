@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { CoverPage } from '@/components/pages/CoverPage';
 import { ExpressServicePage } from '@/components/pages/ExpressServicePage';
 import { LowcostServicePage } from '@/components/pages/LowcostServicePage';
+import { FlexServicePage } from '@/components/pages/FlexServicePage';
 import { Button } from '@/components/ui/button';
 import { Printer, Package } from 'lucide-react';
 
@@ -12,6 +13,7 @@ export default function A4CanvasApp() {
     { id: 'p1', type: 'cover' },
     { id: 'p2', type: 'express' },
     { id: 'p3', type: 'lowcost' },
+    { id: 'p4', type: 'flex' },
   ]);
 
   const handlePrint = () => {
@@ -53,10 +55,11 @@ export default function A4CanvasApp() {
       {/* Pages Container */}
       <main className="flex flex-col items-center pt-32">
         {pages.map((page, index) => (
-          <div key={page.id} className="relative">
+          <div key={page.id} className="relative mb-10">
             {page.type === 'cover' && <CoverPage pageNumber={index + 1} totalPageCount={11} />}
             {page.type === 'express' && <ExpressServicePage pageNumber={index + 1} totalPageCount={11} />}
             {page.type === 'lowcost' && <LowcostServicePage pageNumber={index + 1} totalPageCount={11} />}
+            {page.type === 'flex' && <FlexServicePage pageNumber={index + 1} totalPageCount={11} />}
           </div>
         ))}
       </main>
