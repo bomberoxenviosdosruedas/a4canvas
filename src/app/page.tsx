@@ -2,13 +2,14 @@
 
 import React, { useState } from 'react';
 import { CoverPage } from '@/components/pages/CoverPage';
+import { ExpressServicePage } from '@/components/pages/ExpressServicePage';
 import { Button } from '@/components/ui/button';
 import { Printer, Package } from 'lucide-react';
 
 export default function A4CanvasApp() {
-  // Focus only on Page 1 for now as requested
   const [pages] = useState([
-    { id: 'p1', type: 'cover', title: 'Portada Operativa' },
+    { id: 'p1', type: 'cover' },
+    { id: 'p2', type: 'express' },
   ]);
 
   const handlePrint = () => {
@@ -29,7 +30,7 @@ export default function A4CanvasApp() {
             </h1>
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-[#ffc107] animate-pulse" />
-              <p className="text-[10px] text-[#ffc107]/80 uppercase tracking-[0.4em] font-bold font-mono">Página 1 de 11 / 2026</p>
+              <p className="text-[10px] text-[#ffc107]/80 uppercase tracking-[0.4em] font-bold font-mono">Página {pages.length} de 11 / 2026</p>
             </div>
           </div>
         </div>
@@ -42,7 +43,7 @@ export default function A4CanvasApp() {
             onClick={handlePrint}
           >
             <Printer className="w-4 h-4 mr-3" />
-            Exportar Portada
+            Exportar Propuesta
           </Button>
         </div>
       </nav>
@@ -52,6 +53,7 @@ export default function A4CanvasApp() {
         {pages.map((page, index) => (
           <div key={page.id} className="relative">
             {page.type === 'cover' && <CoverPage pageNumber={index + 1} totalPageCount={11} />}
+            {page.type === 'express' && <ExpressServicePage pageNumber={index + 1} totalPageCount={11} />}
           </div>
         ))}
       </main>

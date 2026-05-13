@@ -24,12 +24,6 @@
     --input: 208 34% 21%;
     --ring: 45 100% 49%;
     --radius: 0.125rem;
-
-    /* Custom Palette from HTML */
-    --on-surface-variant: 41 34% 75%;
-    --surface-container: 205 60% 12%;
-    --primary-container: 45 100% 51%;
-    --outline-variant: 42 22% 26%;
   }
 }
 
@@ -53,7 +47,6 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    padding: 15mm;
     border: 1px solid rgba(250, 189, 0, 0.1);
   }
 
@@ -63,6 +56,18 @@
     background-position: center;
     background-blend-mode: overlay;
     @apply absolute inset-0 z-0 opacity-10;
+  }
+
+  .geometric-bg-overlay {
+    background-image: 
+        linear-gradient(135deg, rgba(24, 44, 60, 0.1) 25%, transparent 25%),
+        linear-gradient(225deg, rgba(24, 44, 60, 0.1) 25%, transparent 25%),
+        linear-gradient(45deg, rgba(24, 44, 60, 0.1) 25%, transparent 25%),
+        linear-gradient(315deg, rgba(24, 44, 60, 0.1) 25%, transparent 25%);
+    background-position: 10px 0, 10px 0, 0 0, 0 0;
+    background-size: 20px 20px;
+    background-repeat: repeat;
+    @apply absolute inset-0 z-0 opacity-30 pointer-events-none mix-blend-overlay;
   }
 
   .industrial-card-glow {
