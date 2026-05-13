@@ -55,14 +55,14 @@ This is page {{{pageNumber}}} out of {{{totalPageCount}}}.
 Here is the text content for this page:
 {{{proposalText}}}
 
-{{#if attachedImages.length}}
+{{#if attachedImages}}
 Images attached for this page:
 {{#each attachedImages}}
-  Image {{add @index 1}}: {{media url=this}}
+  - Image: {{media url=this}}
 {{/each}}
 {{/if}}
 
-{{#if designGoals.length}}
+{{#if designGoals}}
 Specific design goals for this page:
 {{#each designGoals}}
   - {{{this}}}
