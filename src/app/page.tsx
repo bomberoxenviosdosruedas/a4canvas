@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { CoverPage } from '@/components/pages/CoverPage';
 import { ExpressServicePage } from '@/components/pages/ExpressServicePage';
+import { LowcostServicePage } from '@/components/pages/LowcostServicePage';
 import { Button } from '@/components/ui/button';
 import { Printer, Package } from 'lucide-react';
 
@@ -10,6 +11,7 @@ export default function A4CanvasApp() {
   const [pages] = useState([
     { id: 'p1', type: 'cover' },
     { id: 'p2', type: 'express' },
+    { id: 'p3', type: 'lowcost' },
   ]);
 
   const handlePrint = () => {
@@ -54,6 +56,7 @@ export default function A4CanvasApp() {
           <div key={page.id} className="relative">
             {page.type === 'cover' && <CoverPage pageNumber={index + 1} totalPageCount={11} />}
             {page.type === 'express' && <ExpressServicePage pageNumber={index + 1} totalPageCount={11} />}
+            {page.type === 'lowcost' && <LowcostServicePage pageNumber={index + 1} totalPageCount={11} />}
           </div>
         ))}
       </main>
