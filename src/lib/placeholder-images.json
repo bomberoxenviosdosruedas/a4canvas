@@ -1,3 +1,28 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "logistics-bike",
+      "description": "Logistics motorcycle for delivery",
+      "imageUrl": "https://picsum.photos/seed/delivery-bike/1200/800",
+      "imageHint": "delivery motorcycle"
+    },
+    {
+      "id": "warehouse",
+      "description": "Modern warehouse distribution center",
+      "imageUrl": "https://picsum.photos/seed/logistics-hub/1200/800",
+      "imageHint": "modern warehouse"
+    },
+    {
+      "id": "city-route",
+      "description": "City map with delivery routes",
+      "imageUrl": "https://picsum.photos/seed/city-map/1200/800",
+      "imageHint": "city logistics"
+    },
+    {
+      "id": "logo-background",
+      "description": "Abstract industrial gold texture",
+      "imageUrl": "https://picsum.photos/seed/industrial-gold/1200/800",
+      "imageHint": "gold metal"
+    }
+  ]
 }
