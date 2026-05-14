@@ -1,84 +1,92 @@
-
 import React from 'react';
 import { A4Page } from '@/components/A4Page';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import Image from 'next/image';
-import { Mail, Phone, MapPin, Globe } from 'lucide-react';
+import { MessageSquare, Globe, Mail, MapPin, CheckCircle2 } from 'lucide-react';
 
 export const ClosurePage = ({ pageNumber, totalPageCount }: { pageNumber: number, totalPageCount: number }) => {
-  const closureImg = PlaceHolderImages.find(img => img.id === 'corporate-meeting');
-
   return (
-    <A4Page pageNumber={pageNumber} totalPageCount={totalPageCount} className="p-0 tech-pattern overflow-hidden">
-      <div className="relative h-full flex flex-col">
-        <div className="h-[45%] relative overflow-hidden group">
-          {closureImg && (
-            <Image 
-              src={closureImg.imageUrl} 
-              alt="Cierre" 
-              fill 
-              className="object-cover opacity-30 grayscale group-hover:grayscale-0 transition-all duration-1000" 
-              data-ai-hint={closureImg.imageHint}
-            />
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-          <div className="absolute inset-0 bg-primary/10 pointer-events-none" />
-          
-          <div className="absolute bottom-12 left-16 right-16">
-             <h2 className="font-headline text-7xl font-black tracking-tighter text-white">CONSTRUYAMOS <br/><span className="text-primary italic">EL FUTURO</span></h2>
-          </div>
+    <A4Page pageNumber={pageNumber} totalPageCount={totalPageCount} className="p-0">
+      <div className="relative h-full flex flex-col items-center py-16 px-12 text-center">
+        {/* Logo Central */}
+        <div className="w-32 h-32 rounded-full border-4 border-primary flex flex-col items-center justify-center bg-card shadow-[0_0_40px_rgba(255,193,7,0.3)] mb-10 p-2 group transition-all duration-700 hover:scale-110">
+          <span className="text-[10px] uppercase text-muted-foreground font-bold tracking-widest">Envíos</span>
+          <span className="text-sm font-black text-white tracking-wide italic">DosRuedas</span>
+          <span className="text-[10px] text-primary mt-1 font-mono">223-6602699</span>
         </div>
 
-        <div className="flex-1 p-16 flex flex-col justify-between">
-          <div className="grid grid-cols-2 gap-20">
-            <div className="space-y-12">
-              <p className="text-lg text-foreground/80 leading-relaxed font-medium">
-                Esta propuesta representa el inicio de una alianza estratégica diseñada para elevar el estándar logístico de Corporativo Express S.A. Estamos listos para comenzar.
-              </p>
-              
-              <div className="space-y-6">
-                <div className="flex items-center gap-4 text-muted-foreground">
-                  <Mail className="text-primary w-5 h-5" />
-                  <span className="text-sm font-bold">contacto@enviosdosruedas.com</span>
-                </div>
-                <div className="flex items-center gap-4 text-muted-foreground">
-                  <Phone className="text-primary w-5 h-5" />
-                  <span className="text-sm font-bold">+52 (55) 8899-2233</span>
-                </div>
-                <div className="flex items-center gap-4 text-muted-foreground">
-                  <MapPin className="text-primary w-5 h-5" />
-                  <span className="text-sm font-bold">Av. Insurgentes Sur 1234, CDMX, México</span>
-                </div>
-              </div>
-            </div>
+        {/* Hero Title */}
+        <div className="mb-12">
+          <h1 className="text-6xl font-black text-white uppercase tracking-tighter mb-2 drop-shadow-2xl">
+            ESCALEMOS <span className="text-primary italic">JUNTOS</span>
+          </h1>
+          <h2 className="text-2xl font-bold text-primary/80 uppercase tracking-[0.3em]">
+            EL MOTOR DE SU ÚLTIMA MILLA
+          </h2>
+        </div>
 
-            <div className="flex flex-col justify-end items-center">
-              <div className="w-full h-40 border-b border-primary/40 flex items-center justify-center relative mb-4">
-                 <p className="text-[10px] text-primary/30 font-headline font-bold uppercase tracking-widest absolute top-0">Firma Autorizada EDR</p>
-                 <div className="font-headline text-4xl text-primary/60 italic font-black">DosRuedas Core</div>
+        {/* Operation Steps */}
+        <section className="bg-card/40 backdrop-blur-xl rounded-3xl p-10 border border-primary/20 w-full max-w-2xl mb-12 shadow-2xl relative overflow-hidden">
+          <div className="absolute inset-0 bg-tech-pattern opacity-5 pointer-events-none" />
+          <h3 className="text-lg font-black uppercase tracking-widest text-white/60 mb-10">
+            COMENZAR A OPERAR ES MUY SIMPLE:
+          </h3>
+          <div className="space-y-8 text-left">
+            {[
+              { n: "1", t: "Nos escribe por WhatsApp", d: "y nos pasa la información de su envío de forma directa." },
+              { n: "2", t: "Coordinamos el retiro", d: "de la mercadería por su domicilio de forma ágil y rápida." },
+              { n: "3", t: "¡Y listo!", d: "Un cadete estará entregando felicidad a sus clientes en tiempo y forma." }
+            ].map((step, i) => (
+              <div key={i} className="flex items-start gap-6 group">
+                <div className="w-10 h-10 rounded-full bg-primary flex-shrink-0 flex items-center justify-center text-background font-black text-xl shadow-[0_0_15px_rgba(255,193,7,0.5)] group-hover:scale-110 transition-transform">
+                  {step.n}
+                </div>
+                <div>
+                  <h4 className="text-white font-bold text-lg leading-none mb-1">{step.t}</h4>
+                  <p className="text-[#d4c5ab] text-base font-medium">{step.d}</p>
+                </div>
               </div>
-              <p className="text-[9px] font-headline font-bold text-muted-foreground uppercase tracking-widest">DIRECCIÓN GENERAL DE OPERACIONES</p>
-            </div>
+            ))}
           </div>
+        </section>
 
-          <div className="mt-20 border-t border-white/5 pt-12 flex justify-between items-end">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                 <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center font-headline font-black text-background text-xl">EDR</div>
-                 <h4 className="font-headline font-black text-xl tracking-tighter">ENVÍOS DOSRUEDAS</h4>
-              </div>
-              <p className="text-[9px] text-muted-foreground uppercase tracking-[0.4em]">LOGISTICS INTELLIGENCE v4.0.2</p>
+        {/* Call to Action Button */}
+        <a 
+          href="https://wa.me/5492236602699" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="flex items-center gap-4 bg-green-600 hover:bg-green-500 text-white px-10 py-5 rounded-full text-3xl font-black transition-all shadow-[0_0_30px_rgba(22,163,74,0.4)] hover:-translate-y-1 active:scale-95 mb-16"
+        >
+          <MessageSquare className="w-10 h-10 fill-white/20" />
+          223-6602699
+        </a>
+
+        {/* Founder Card */}
+        <footer className="w-full max-w-2xl mt-auto">
+          <div className="bg-card/60 backdrop-blur-md rounded-2xl p-10 border border-primary/20 shadow-2xl relative">
+            <div className="flex flex-col items-center mb-8">
+              <h4 className="text-2xl font-black tracking-tight text-white uppercase italic">Matias Nicolas Cejas</h4>
+              <p className="text-primary font-black tracking-[0.4em] text-xs mt-1 uppercase">Fundador & CEO</p>
+              <div className="h-px w-1/2 bg-gradient-to-r from-transparent via-primary/30 to-transparent mt-6" />
             </div>
             
-            <div className="text-right">
-              <div className="flex items-center gap-4 mb-4">
+            <div className="grid grid-cols-1 gap-4 text-sm font-medium">
+              <div className="flex items-center justify-center gap-4 text-[#d4c5ab]">
                 <Globe className="text-primary w-5 h-5" />
-                <span className="font-headline font-black text-sm">www.enviosdosruedas.com</span>
+                <span>www.enviosdosruedas.com</span>
               </div>
-              <p className="text-[10px] text-primary font-bold uppercase tracking-widest">© 2025 TODOS LOS DERECHOS RESERVADOS</p>
+              <div className="flex items-center justify-center gap-4 text-[#d4c5ab]">
+                <Mail className="text-primary w-5 h-5" />
+                <span>MatiasCejas@enviosdosruedas.com</span>
+              </div>
+              <div className="flex items-center justify-center gap-4 text-[#d4c5ab]">
+                <MapPin className="text-primary w-5 h-5" />
+                <span>Mar del Plata, Buenos Aires, Argentina</span>
+              </div>
             </div>
           </div>
-        </div>
+          <p className="text-[10px] text-white/20 font-bold uppercase tracking-[0.6em] mt-8">
+            ENVÍOS DOS RUEDAS © 2026
+          </p>
+        </footer>
       </div>
     </A4Page>
   );

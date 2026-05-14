@@ -10,6 +10,8 @@ import { Ecommerce24Page } from '@/components/pages/Ecommerce24Page';
 import { FlexibleAccountPage } from '@/components/pages/FlexibleAccountPage';
 import { ComparisonPage } from '@/components/pages/ComparisonPage';
 import { FAQPage } from '@/components/pages/FAQPage';
+import { FAQPage2 } from '@/components/pages/FAQPage2';
+import { ClosurePage } from '@/components/pages/ClosurePage';
 import { Button } from '@/components/ui/button';
 import { Printer, Package } from 'lucide-react';
 
@@ -23,14 +25,16 @@ export default function A4CanvasApp() {
     { id: 'p6', type: 'ecommerce24' },
     { id: 'p7', type: 'flexible-account' },
     { id: 'p8', type: 'comparison' },
-    { id: 'p9', type: 'faq' },
+    { id: 'p9', type: 'faq1' },
+    { id: 'p10', type: 'faq2' },
+    { id: 'p11', type: 'closure' },
   ]);
 
   const handlePrint = () => {
     window.print();
   };
 
-  const totalPages = 11;
+  const totalPages = pages.length;
 
   return (
     <div className="min-h-screen bg-[#000f1d] pb-20 overflow-x-hidden selection:bg-[#ffc107] selection:text-[#011525]">
@@ -46,7 +50,7 @@ export default function A4CanvasApp() {
             </h1>
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-[#ffc107] animate-pulse" />
-              <p className="text-[10px] text-[#ffc107]/80 uppercase tracking-[0.4em] font-bold font-mono">Página {pages.length} de {totalPages} / 2026</p>
+              <p className="text-[10px] text-[#ffc107]/80 uppercase tracking-[0.4em] font-bold font-mono">Propuesta 2026</p>
             </div>
           </div>
         </div>
@@ -76,7 +80,9 @@ export default function A4CanvasApp() {
             {page.type === 'ecommerce24' && <Ecommerce24Page pageNumber={index + 1} totalPageCount={totalPages} />}
             {page.type === 'flexible-account' && <FlexibleAccountPage pageNumber={index + 1} totalPageCount={totalPages} />}
             {page.type === 'comparison' && <ComparisonPage pageNumber={index + 1} totalPageCount={totalPages} />}
-            {page.type === 'faq' && <FAQPage pageNumber={index + 1} totalPageCount={totalPages} />}
+            {page.type === 'faq1' && <FAQPage pageNumber={index + 1} totalPageCount={totalPages} />}
+            {page.type === 'faq2' && <FAQPage2 pageNumber={index + 1} totalPageCount={totalPages} />}
+            {page.type === 'closure' && <ClosurePage pageNumber={index + 1} totalPageCount={totalPages} />}
           </div>
         ))}
       </main>
