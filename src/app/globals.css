@@ -32,14 +32,15 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body;
+    @apply bg-[#000f1d] text-foreground font-body antialiased;
   }
 }
 
 @layer components {
   .a4-page {
-    width: 210mm;
-    height: 297mm;
+    width: 100%;
+    max-width: 210mm;
+    aspect-ratio: 210 / 297;
     margin: 40px auto;
     background-color: #011525;
     box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
@@ -48,6 +49,16 @@
     display: flex;
     flex-direction: column;
     border: 1px solid rgba(250, 189, 0, 0.1);
+  }
+
+  /* Mobile scaling: allow height to grow if needed but keep aspect ratio when possible */
+  @media (max-width: 768px) {
+    .a4-page {
+      aspect-ratio: auto;
+      min-height: 297mm;
+      margin: 10px auto;
+      max-width: 95vw;
+    }
   }
 
   .map-bg {
@@ -68,6 +79,11 @@
     background-size: 20px 20px;
     background-repeat: repeat;
     @apply absolute inset-0 z-0 opacity-30 pointer-events-none mix-blend-overlay;
+  }
+
+  .bg-tech-pattern {
+    background-image: linear-gradient(rgba(1, 21, 37, 0.95), rgba(1, 21, 37, 0.95)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"><path d="M0,50 L400,50 M50,0 L50,400 M100,0 L100,400 M0,100 L400,100 M200,0 L200,400 M0,200 L400,200 M300,0 L300,400 M0,300 L400,300 M350,0 L350,400 M0,350 L400,350" stroke="%23ffc107" stroke-width="1" opacity="0.1"/></svg>');
+    background-size: cover;
   }
 
   .industrial-card-glow {
