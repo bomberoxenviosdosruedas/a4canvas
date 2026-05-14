@@ -3,6 +3,8 @@ import { A4Page } from '@/components/A4Page';
 import { Truck, Package, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
 
+const LOGO_URL = "https://xnarosypsowmisjcevsi.supabase.co/storage/v1/object/public/enviosadmindosruedas/logo.png";
+
 export const CoverPage = ({ pageNumber, totalPageCount }: { pageNumber: number, totalPageCount: number }) => {
   return (
     <A4Page pageNumber={pageNumber} totalPageCount={totalPageCount} className="p-0">
@@ -11,18 +13,13 @@ export const CoverPage = ({ pageNumber, totalPageCount }: { pageNumber: number, 
         {/* Header Ribbon */}
         <header className="flex justify-between items-center w-full py-10 border-b border-white/5">
           <div className="flex items-center gap-5">
-            <div className="w-20 h-20 rounded-full border-2 border-[#ffc107] p-1 bg-[#011525] flex items-center justify-center relative shadow-[0_0_20px_rgba(255,193,7,0.3)]">
-              <div className="absolute inset-0 opacity-20">
-                <Image 
-                  src="https://picsum.photos/seed/tire/200/200"
-                  alt="Logo texture"
-                  fill
-                  className="object-cover rounded-full grayscale mix-blend-screen"
-                />
-              </div>
-              <div className="font-headline font-black text-[#ffc107] italic leading-none text-center text-[10px] z-10">
-                ENVÍOS<br/>DOSRUEDAS
-              </div>
+            <div className="w-20 h-20 rounded-full border-2 border-[#ffc107] p-1 bg-[#011525] flex items-center justify-center relative shadow-[0_0_15px_rgba(255,193,7,0.3)]">
+              <Image 
+                src={LOGO_URL}
+                alt="Logo Envíos DosRuedas"
+                fill
+                className="object-contain p-2"
+              />
             </div>
             <div className="flex flex-col">
               <h1 className="font-headline text-3xl font-black italic tracking-tighter text-white leading-none">ENVÍOS</h1>

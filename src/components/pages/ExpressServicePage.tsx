@@ -1,6 +1,9 @@
 import React from 'react';
 import { A4Page } from '@/components/A4Page';
-import { Compass, Zap, Clock, CloudRain, Timer, Package, RotateCcw } from 'lucide-react';
+import Image from 'next/image';
+import { Zap, Clock, CloudRain, Timer, Package, RotateCcw } from 'lucide-react';
+
+const LOGO_URL = "https://xnarosypsowmisjcevsi.supabase.co/storage/v1/object/public/enviosadmindosruedas/logo.png";
 
 export const ExpressServicePage = ({ pageNumber, totalPageCount }: { pageNumber: number, totalPageCount: number }) => {
   return (
@@ -12,7 +15,9 @@ export const ExpressServicePage = ({ pageNumber, totalPageCount }: { pageNumber:
         {/* Top Header */}
         <header className="relative z-10 border-b border-white/10 px-12 py-6 flex justify-between items-center bg-[#011525]/80 backdrop-blur-sm">
           <div className="flex items-center gap-3">
-            <Compass className="text-[#ffc107] w-8 h-8" />
+            <div className="w-10 h-10 relative">
+              <Image src={LOGO_URL} alt="Logo EDR" fill className="object-contain" />
+            </div>
             <span className="font-headline text-xl font-black text-white italic tracking-tighter uppercase">ENVÍOS DOSRUEDAS</span>
           </div>
           <div className="px-4 py-1.5 border border-[#ffc107] text-[#ffc107] font-mono text-[10px] font-bold uppercase tracking-widest rounded shadow-[0_0_10px_rgba(255,193,7,0.2)]">

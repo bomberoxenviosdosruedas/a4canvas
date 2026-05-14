@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { CoverPage } from '@/components/pages/CoverPage';
 import { ExpressServicePage } from '@/components/pages/ExpressServicePage';
 import { LowcostServicePage } from '@/components/pages/LowcostServicePage';
@@ -13,7 +14,9 @@ import { FAQPage } from '@/components/pages/FAQPage';
 import { FAQPage2 } from '@/components/pages/FAQPage2';
 import { ClosurePage } from '@/components/pages/ClosurePage';
 import { Button } from '@/components/ui/button';
-import { Printer, Package } from 'lucide-react';
+import { Printer } from 'lucide-react';
+
+const LOGO_URL = "https://xnarosypsowmisjcevsi.supabase.co/storage/v1/object/public/enviosadmindosruedas/logo.png";
 
 export default function A4CanvasApp() {
   const [pages] = useState([
@@ -41,8 +44,13 @@ export default function A4CanvasApp() {
       {/* Navigation Header */}
       <nav className="fixed top-0 left-0 right-0 h-20 bg-[#011525]/80 backdrop-blur-xl z-50 border-b border-[#ffc107]/20 px-8 flex items-center justify-between no-print">
         <div className="flex items-center gap-6">
-          <div className="bg-[#ffc107] p-2.5 rounded-lg shadow-[0_0_20px_rgba(255,193,7,0.3)]">
-            <Package className="text-[#011525] w-6 h-6" />
+          <div className="bg-[#ffc107] p-1 rounded-lg shadow-[0_0_20px_rgba(255,193,7,0.3)] w-12 h-12 relative overflow-hidden">
+            <Image 
+              src={LOGO_URL} 
+              alt="Logo EDR" 
+              fill 
+              className="object-contain"
+            />
           </div>
           <div>
             <h1 className="font-headline font-black text-xl tracking-tighter text-white uppercase italic">
