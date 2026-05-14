@@ -7,72 +7,78 @@ const LOGO_URL = "https://xnarosypsowmisjcevsi.supabase.co/storage/v1/object/pub
 
 export const FAQPage2 = ({ pageNumber, totalPageCount }: { pageNumber: number, totalPageCount: number }) => {
   return (
-    <A4Page pageNumber={pageNumber} totalPageCount={totalPageCount} className="p-0 text-white font-['Montserrat']">
-      <div className="relative h-full flex flex-col p-10 bg-[#0a192f] bg-gradient-to-tr from-[#0a192f] to-[#132c4f]">
-        <header className="flex justify-between items-center mb-8 relative z-10">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center bg-[#0a192f] relative overflow-hidden">
-              <Image src={LOGO_URL} alt="Logo EDR" fill className="object-contain p-2" />
+    <A4Page pageNumber={pageNumber} totalPageCount={totalPageCount}>
+      {/* Header */}
+      <header className="flex justify-between items-center w-full pb-8 border-b border-white/5 mb-8">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-full border border-white/10 p-1 bg-background relative flex items-center justify-center">
+            <Image src={LOGO_URL} alt="Logo" fill className="object-contain p-1.5" />
+          </div>
+          <h1 className="text-xl font-bold italic tracking-tighter uppercase text-white">ENVIOS <span className="text-primary">DOSRUEDAS</span></h1>
+        </div>
+        <div className="border border-primary text-primary px-5 py-2 rounded-full text-[10px] font-black tracking-[0.2em] uppercase box-glow">
+          Soporte y Condiciones
+        </div>
+      </header>
+
+      {/* Title */}
+      <h2 className="text-4xl font-black italic tracking-tighter mb-8 uppercase text-white leading-none">
+        PREGUNTAS FRECUENTES <span className="text-muted-foreground text-2xl font-medium not-italic ml-2 tracking-normal">(2/2)</span>
+      </h2>
+
+      {/* Grid Cases */}
+      <div className="flex flex-col gap-4 flex-grow">
+        <article className="bg-card/50 border border-white/5 rounded-2xl p-6 flex gap-6 items-start shadow-lg">
+          <div className="p-3 bg-primary/10 rounded-xl"><MapPin className="text-primary w-8 h-8" /></div>
+          <div>
+            <h3 className="text-primary font-black text-sm mb-2 uppercase leading-snug tracking-widest italic">¿DIRECCIÓN INCORRECTA?</h3>
+            <p className="text-muted-foreground text-xs leading-relaxed font-medium">
+              Si el cadete llegó al domicilio y la dirección era errónea, <span className="text-white font-bold">el viaje se abona igual</span>. El tramo extra hasta el nuevo destino se cobra proporcional a la distancia.
+            </p>
+          </div>
+        </article>
+
+        <article className="bg-card/50 border border-white/5 rounded-2xl p-6 flex gap-6 items-start shadow-lg">
+          <div className="p-3 bg-primary/10 rounded-xl"><Box className="text-primary w-8 h-8" /></div>
+          <div>
+            <h3 className="text-primary font-black text-sm mb-2 uppercase leading-snug tracking-widest italic">¿RECHAZO EN PUERTA?</h3>
+            <p className="text-muted-foreground text-xs leading-relaxed font-medium">
+              Si el comprador rechaza el producto en la puerta, el costo de ida se abona normalmente pero la devolución del paquete a su local se realiza <span className="text-[#4ade80] font-black italic">TOTALMENTE SIN CARGO</span>.
+            </p>
+          </div>
+        </article>
+
+        <article className="bg-card/50 border border-white/5 rounded-2xl p-6 flex gap-6 items-start shadow-lg">
+          <div className="p-3 bg-primary/10 rounded-xl"><Home className="text-primary w-8 h-8" /></div>
+          <div>
+            <h3 className="text-primary font-black text-sm mb-2 uppercase leading-snug tracking-widest italic">2DA VISITA POR AUSENTE</h3>
+            <div className="text-muted-foreground text-xs leading-relaxed font-medium space-y-1">
+              <p>- <strong className="text-white">Express/LowCost:</strong> Se liquida como un viaje nuevo.</p>
+              <p>- <strong className="text-white">Cta Corriente:</strong> Se cobra solo el 50% de la tarifa.</p>
+              <p>- <strong className="text-[#4ade80]">E-Commerce 3PL:</strong> La 2da visita es <span className="font-black italic">100% BONIFICADA</span>.</p>
             </div>
-            <h1 className="text-lg font-extrabold italic tracking-wider flex gap-1.5 uppercase">
-              <span className="text-white">ENVIOS</span>
-              <span className="text-[#fcd34d]">DOSRUEDAS</span>
-            </h1>
           </div>
-          <div className="bg-[#fcd34d] text-[#0a192f] rounded-md px-4 py-1 text-[10px] font-bold uppercase tracking-wide">
-            SOPORTE Y CONDICIONES
+        </article>
+
+        <article className="bg-card/50 border border-white/5 rounded-2xl p-6 flex gap-6 items-start shadow-lg">
+          <div className="p-3 bg-primary/10 rounded-xl"><CloudRain className="text-primary w-8 h-8" /></div>
+          <div>
+            <h3 className="text-primary font-black text-sm mb-2 uppercase leading-snug tracking-widest italic">LLUVIA Y DEMORAS</h3>
+            <p className="text-muted-foreground text-xs leading-relaxed font-medium italic">
+              Recargo clima: 50% (30% Flex). Tolerancia espera: 10 min en domicilio, luego se adicionan <span className="text-white font-bold">$2.200 cada 10 min.</span>
+            </p>
           </div>
-        </header>
+        </article>
 
-        <main className="flex-grow flex flex-col relative z-10 overflow-hidden">
-          <h2 className="text-3xl font-extrabold tracking-tight mb-6 uppercase italic">
-            PREGUNTAS FRECUENTES <span className="text-gray-400 text-xl font-medium not-italic ml-2">(2/2)</span>
-          </h2>
-
-          <div className="flex flex-col gap-4">
-            <article className="bg-[#1e3a5f]/80 backdrop-blur-sm border border-[#2a4d7a] rounded-xl p-5 flex gap-5 items-start shadow-lg">
-              <MapPin className="text-[#b0c4de] w-10 h-10 flex-shrink-0" />
-              <div>
-                <h3 className="text-[#fcd34d] font-bold text-[13px] mb-1 uppercase leading-snug">DIRECCIÓN INCORRECTA</h3>
-                <p className="text-[#e2e8f0] text-[12px] leading-relaxed">Si el cadete ya llegó al domicilio y la dirección era errónea, el viaje se abona igual. El tramo extra se cobra proporcional.</p>
-              </div>
-            </article>
-
-            <article className="bg-[#1e3a5f]/80 backdrop-blur-sm border border-[#2a4d7a] rounded-xl p-5 flex gap-5 items-start shadow-lg">
-              <Box className="text-[#b0c4de] w-10 h-10 flex-shrink-0" />
-              <div>
-                <h3 className="text-[#fcd34d] font-bold text-[13px] mb-1 uppercase leading-snug">RECHAZO EN PUERTA</h3>
-                <p className="text-[#e2e8f0] text-[12px] leading-relaxed">Si el comprador rechaza el producto, el costo de ida se abona pero la devolución al local es <strong className="text-white">SIN CARGO</strong>.</p>
-              </div>
-            </article>
-
-            <article className="bg-[#1e3a5f]/80 backdrop-blur-sm border border-[#2a4d7a] rounded-xl p-5 flex gap-5 items-start shadow-lg">
-              <Home className="text-[#b0c4de] w-10 h-10 flex-shrink-0" />
-              <div>
-                <h3 className="text-[#fcd34d] font-bold text-[13px] mb-1 uppercase leading-snug">2DA VISITA POR AUSENTE</h3>
-                <div className="text-[#e2e8f0] text-[12px] leading-relaxed">
-                  <p>Express/LowCost: Viaje nuevo. Cta Corriente: 50%. Flex ML: Según Nivel. E-Commerce: <strong className="text-white italic">100% Bonificada.</strong></p>
-                </div>
-              </div>
-            </article>
-
-            <article className="bg-[#1e3a5f]/80 backdrop-blur-sm border border-[#2a4d7a] rounded-xl p-5 flex gap-5 items-start shadow-lg">
-              <CloudRain className="text-[#b0c4de] w-10 h-10 flex-shrink-0" />
-              <div>
-                <h3 className="text-[#fcd34d] font-bold text-[13px] mb-1 uppercase leading-snug">LLUVIA Y DEMORAS</h3>
-                <p className="text-[#e2e8f0] text-[12px] leading-relaxed">Recargo clima: 50% (30% Flex). Tolerancia espera: 10 min, luego <strong className="text-white">$2.200 c/10 min.</strong></p>
-              </div>
-            </article>
-
-            <article className="bg-[#451a24] border border-[#7f1d1d] rounded-xl p-5 flex gap-5 items-start shadow-lg relative overflow-hidden">
-              <ShieldAlert className="text-[#ff8a8a] w-10 h-10 flex-shrink-0 relative z-10" />
-              <div className="relative z-10">
-                <h3 className="text-[#ffcc80] font-bold text-[13px] mb-1 uppercase leading-snug">SINIESTROS EN CALLE</h3>
-                <p className="text-[#e2e8f0] text-[12px] leading-relaxed">Ante eventualidades o extravíos, analizamos cada caso de forma <strong className="text-white">personalizada</strong> con el comercio para definir pasos a seguir.</p>
-              </div>
-            </article>
+        <article className="bg-destructive/10 border border-destructive/30 rounded-2xl p-8 flex gap-6 items-start shadow-2xl mt-auto border-dashed">
+          <div className="p-3 bg-destructive/20 rounded-xl"><ShieldAlert className="text-destructive w-10 h-10" /></div>
+          <div>
+            <h3 className="text-destructive font-black text-base mb-2 uppercase leading-tight tracking-widest italic">SINIESTROS EN CALLE</h3>
+            <p className="text-muted-foreground text-xs leading-relaxed font-medium italic">
+              Cuidamos su esfuerzo. Ante cualquier eventualidad, extravío o accidente, analizamos cada caso de forma <strong className="text-white not-italic">personalizada y directa</strong> con el comercio para definir los pasos a seguir de forma justa.
+            </p>
           </div>
-        </main>
+        </article>
       </div>
     </A4Page>
   );

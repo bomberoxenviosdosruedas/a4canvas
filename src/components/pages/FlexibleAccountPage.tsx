@@ -1,132 +1,127 @@
 import React from 'react';
 import { A4Page } from '@/components/A4Page';
 import Image from 'next/image';
-import { CheckCircle2, Calendar, Star } from 'lucide-react';
+import { CheckCircle2, Calendar, Star, Info } from 'lucide-react';
 
 const LOGO_URL = "https://xnarosypsowmisjcevsi.supabase.co/storage/v1/object/public/enviosadmindosruedas/logo.png";
 
 export const FlexibleAccountPage = ({ pageNumber, totalPageCount }: { pageNumber: number, totalPageCount: number }) => {
   return (
-    <A4Page pageNumber={pageNumber} totalPageCount={totalPageCount} className="p-0 text-white font-['Montserrat']">
-      <div className="relative h-full flex flex-col p-8 sm:p-12 bg-[#0b1528] bg-pattern">
-        
-        {/* BEGIN: Header Section */}
-        <header className="flex justify-between items-start mb-10 relative z-10">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center p-1 relative overflow-hidden">
-              <Image src={LOGO_URL} alt="Logo EDR" fill className="object-contain p-2" />
-            </div>
-            <h1 className="font-headline font-black text-xl tracking-wider text-white italic">ENVIOS <span className="text-[#dfb967]">DOSRUEDAS</span></h1>
+    <A4Page pageNumber={pageNumber} totalPageCount={totalPageCount}>
+      {/* Header */}
+      <header className="flex justify-between items-center w-full pb-8 border-b border-white/5 mb-8">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-full border border-white/10 p-1 bg-background relative flex items-center justify-center">
+            <Image src={LOGO_URL} alt="Logo" fill className="object-contain p-1.5" />
           </div>
-          <div className="border border-[#dfb967] text-[#dfb967] px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase shadow-[0_0_10px_rgba(223,185,103,0.3)]">
-            Pymes y Emprendedores
-          </div>
-        </header>
-
-        {/* BEGIN: Main Title */}
-        <section className="mb-8 relative z-10">
-          <h2 className="font-headline font-black text-4xl sm:text-5xl text-white mb-2 uppercase tracking-tight">Cuenta Corriente <span className="text-[#dfb967]">Flexible</span></h2>
-          <h3 className="font-headline font-bold text-lg text-gray-300 uppercase tracking-widest">Simplicidad para negocios sin volumen fijo</h3>
-        </section>
-
-        {/* BEGIN: Description Panel */}
-        <section className="bg-panel rounded-xl p-6 sm:p-8 mb-10 border-l-4 border-[#dfb967] shadow-lg relative z-10">
-          <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
-            Diseñado especialmente para emprendedores y empresas que buscan simplificar y profesionalizar sus envíos, pero que no cuentan con un volumen fijo o este es muy variable. <strong className="text-white">Al trabajar de forma exclusiva con nosotros, accede a los mejores beneficios logísticos.</strong>
-          </p>
-        </section>
-
-        {/* BEGIN: Two Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 relative z-10 flex-grow">
-          {/* Left Column: Beneficios */}
-          <section>
-            <div className="flex items-center gap-3 mb-6">
-              <Star className="w-8 h-8 text-[#dfb967]" />
-              <h4 className="font-headline font-bold text-lg text-[#dfb967] uppercase tracking-wider">Beneficios Exclusivos</h4>
-            </div>
-            <ul className="space-y-6">
-              <li className="flex items-start gap-4 text-sm sm:text-base">
-                <CheckCircle2 className="w-6 h-6 text-[#dfb967] flex-shrink-0 mt-0.5" />
-                <div>
-                  <strong className="text-white block mb-1">Valor LowCost, Servicio Express:</strong>
-                  <p className="text-gray-300 leading-snug">
-                    Aboná la tarifa económica (LowCost), pero gozá de las condiciones de envío Express: <span className="text-[#dfb967] font-medium">elección de rango horario</span>, límite de recepción hasta <span className="text-[#dfb967] font-medium">15:00hs</span>, y un mínimo de <span className="text-[#dfb967] font-medium">2hs de anticipación</span>.
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start gap-4 text-sm sm:text-base">
-                <CheckCircle2 className="w-6 h-6 text-[#dfb967] flex-shrink-0 mt-0.5" />
-                <div>
-                  <strong className="text-white block mb-1">Flexibilidad Total en Pagos:</strong>
-                  <p className="text-gray-300 leading-snug">
-                    El envío puede ser abonado por usted (quien lo solicita) o por el cliente que recibe en destino.
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </section>
-
-          {/* Right Column: Frecuencias */}
-          <section>
-            <div className="flex items-center gap-3 mb-6">
-              <Calendar className="w-8 h-8 text-[#dfb967]" />
-              <h4 className="font-headline font-bold text-lg text-[#dfb967] uppercase tracking-wider">Frecuencia de Cierre</h4>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { label: "Diario", sub: "(x Envío)", active: false },
-                { label: "Semanal", sub: "Corte Viernes", active: false },
-                { label: "Quincenal", sub: "Días 15 y 30", active: false },
-                { label: "Mensual", sub: "Corte Fin Mes", active: true }
-              ].map((opt, i) => (
-                <div 
-                  key={i} 
-                  className={`bg-panel border rounded-xl p-4 flex flex-col items-center justify-center text-center h-28 transition-all ${
-                    opt.active ? 'border-2 border-[#dfb967] shadow-[0_0_10px_rgba(223,185,103,0.3)]' : 'border-gray-700 hover:border-gray-500'
-                  }`}
-                >
-                  <span className={`font-bold text-sm ${opt.active ? 'text-[#dfb967]' : 'text-white'}`}>{opt.label}</span>
-                  <span className="text-[10px] text-gray-400 uppercase tracking-widest mt-1">{opt.sub}</span>
-                </div>
-              ))}
-            </div>
-          </section>
+          <h1 className="text-xl font-bold italic tracking-tighter uppercase text-white">ENVIOS <span className="text-primary">DOSRUEDAS</span></h1>
         </div>
+        <div className="border border-primary text-primary px-5 py-2 rounded-full text-[10px] font-black tracking-[0.2em] uppercase shadow-[0_0_15px_rgba(255,193,7,0.2)]">
+          Pymes y Emprendedores
+        </div>
+      </header>
 
-        {/* BEGIN: Condiciones Operativas Panel */}
-        <section className="bg-panel border border-gray-800 rounded-xl p-6 sm:p-8 relative z-10 mb-8 mt-auto">
-          <h4 className="font-headline font-bold text-base sm:text-lg text-[#dfb967] uppercase tracking-wider mb-6 text-center">Condiciones Operativas Adicionales</h4>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+      {/* Main Title */}
+      <section className="mb-10">
+        <h2 className="font-headline font-black text-5xl text-white mb-3 uppercase tracking-tighter leading-none">
+          Cuenta Corriente <span className="text-primary italic">Flexible</span>
+        </h2>
+        <h3 className="font-headline font-bold text-lg text-muted-foreground uppercase tracking-[0.3em]">Simplicidad para negocios sin volumen fijo</h3>
+      </section>
+
+      {/* Description Panel */}
+      <section className="bg-card/40 rounded-xl p-8 mb-10 border-l-4 border-primary shadow-2xl relative">
+        <p className="text-gray-300 leading-relaxed text-[15px] font-medium italic">
+          Diseñado especialmente para emprendedores y empresas que buscan profesionalizar sus envíos sin volumen fijo. <strong className="text-white not-italic">Al trabajar de forma exclusiva con nosotros, accede a los mejores beneficios logísticos del mercado.</strong>
+        </p>
+      </section>
+
+      {/* Two Column Layout */}
+      <div className="grid grid-cols-2 gap-10 mb-10 flex-grow">
+        {/* Left Column: Beneficios */}
+        <section className="space-y-8">
+          <div className="flex items-center gap-4 mb-2">
+            <div className="p-2 bg-primary/10 rounded-lg"><Star className="w-8 h-8 text-primary" /></div>
+            <h4 className="font-headline font-black text-base text-primary uppercase tracking-widest leading-tight">Beneficios <br/>Exclusivos</h4>
+          </div>
+          <ul className="space-y-8">
+            <li className="flex items-start gap-5">
+              <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1" />
+              <div>
+                <strong className="text-white block mb-2 text-sm uppercase tracking-wide">Valor LowCost, Servicio Express:</strong>
+                <p className="text-muted-foreground text-xs leading-relaxed">
+                  Aboná la tarifa económica (LowCost), pero gozá de condiciones Express: <span className="text-primary font-bold italic">elección de rango horario</span>, recepción hasta <span className="text-primary font-bold italic">15:00hs</span>, y respuesta ágil.
+                </p>
+              </div>
+            </li>
+            <li className="flex items-start gap-5">
+              <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1" />
+              <div>
+                <strong className="text-white block mb-2 text-sm uppercase tracking-wide">Flexibilidad Total en Pagos:</strong>
+                <p className="text-muted-foreground text-xs leading-relaxed">
+                  El costo operativo puede ser liquidado por su empresa o directamente por el cliente que recibe en domicilio, según su conveniencia comercial.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        {/* Right Column: Frecuencias */}
+        <section>
+          <div className="flex items-center gap-4 mb-8">
+            <div className="p-2 bg-primary/10 rounded-lg"><Calendar className="w-8 h-8 text-primary" /></div>
+            <h4 className="font-headline font-black text-base text-primary uppercase tracking-widest leading-tight">Frecuencia <br/>de Cierre</h4>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
             {[
-              { l: "Lluvia:", v: "+50%" },
-              { l: "Bulto:", v: "+$1.800" },
-              { l: "Demora:", v: "+$2.200" },
-              { l: "Vuelta:", v: "50%" }
-            ].map((c, i) => (
-              <div key={i} className="bg-[#0b1528] rounded-lg p-3 text-center border border-gray-800">
-                <span className="block font-bold text-[#dfb967] text-xs mb-1 uppercase tracking-wide">{c.l}</span>
-                <span className="text-white font-semibold">{c.v}</span>
+              { label: "Diario", sub: "(x Envío)", active: false },
+              { label: "Semanal", sub: "Corte Viernes", active: false },
+              { label: "Quincenal", sub: "Días 15 y 30", active: false },
+              { label: "Mensual", sub: "Corte Fin Mes", active: true }
+            ].map((opt, i) => (
+              <div 
+                key={i} 
+                className={`bg-card/40 border rounded-2xl p-5 flex flex-col items-center justify-center text-center h-32 transition-all relative ${
+                  opt.active ? 'border-2 border-primary shadow-[0_0_20px_rgba(255,193,7,0.2)] bg-primary/5' : 'border-white/10 grayscale opacity-40'
+                }`}
+              >
+                {opt.active && <div className="absolute top-2 right-2"><Info className="w-3 h-3 text-primary" /></div>}
+                <span className={`font-black text-sm uppercase tracking-widest ${opt.active ? 'text-primary' : 'text-white'}`}>{opt.label}</span>
+                <span className="text-[8px] text-muted-foreground font-black uppercase tracking-[0.2em] mt-2 italic">{opt.sub}</span>
               </div>
             ))}
           </div>
-
-          <div className="bg-gradient-to-r from-[#134e3a] to-[#0c2b20] border border-green-700/50 rounded-xl p-6 text-center shadow-lg">
-            <h5 className="font-headline font-bold text-lg sm:text-xl text-green-300 uppercase tracking-widest flex items-center justify-center gap-2 mb-2">
-              <Star className="w-6 h-6 text-yellow-400 fill-yellow-400" />
-              2DA Visita Bonificada
-            </h5>
-            <p className="text-sm sm:text-base text-gray-200">
-              Si el cliente final está ausente, la 2da visita se cobra solo <strong className="text-[#dfb967] font-semibold">al 50%</strong> del valor original.
-            </p>
-          </div>
         </section>
-
-        {/* Footer */}
-        <footer className="mt-auto pt-6 flex justify-between items-center text-gray-500 text-sm font-medium relative z-10 border-t border-gray-800/50">
-          <p>Envíos por Cuenta Corriente Exclusiva</p>
-          <p className="font-headline font-bold text-gray-400">{pageNumber} / {totalPageCount}</p>
-        </footer>
       </div>
+
+      {/* Conditions Panel */}
+      <section className="bg-card/60 border border-white/5 rounded-2xl p-8 mt-auto">
+        <h4 className="font-headline font-black text-xs text-primary uppercase tracking-[0.4em] mb-8 text-center">Condiciones Operativas Adicionales</h4>
+        <div className="grid grid-cols-4 gap-4 mb-10">
+          {[
+            { l: "Lluvia:", v: "+50%" },
+            { l: "Bulto:", v: "+$1.800" },
+            { l: "Demora:", v: "+$2.200" },
+            { l: "Vuelta:", v: "50%" }
+          ].map((c, i) => (
+            <div key={i} className="bg-background rounded-xl p-4 text-center border border-white/5 shadow-inner">
+              <span className="block font-black text-primary text-[10px] mb-1 uppercase tracking-widest">{c.l}</span>
+              <span className="text-white font-black text-lg tracking-tighter">{c.v}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="bg-gradient-to-r from-[#134e3a] to-[#0c2b20] border border-[#1e4c3d] rounded-2xl p-6 text-center shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-white/5 pointer-events-none" />
+          <h5 className="font-headline font-black text-xl text-[#4ade80] uppercase tracking-[0.2em] flex items-center justify-center gap-3 mb-2">
+            <Star className="w-6 h-6 text-primary fill-primary" />
+            2DA Visita Bonificada
+          </h5>
+          <p className="text-sm text-gray-200 font-medium italic">
+            Si el cliente está ausente, la 2da visita se liquida solo <strong className="text-primary font-black not-italic">al 50%</strong> del valor base.
+          </p>
+        </div>
+      </section>
     </A4Page>
   );
 };

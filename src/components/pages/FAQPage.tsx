@@ -8,76 +8,68 @@ const LOGO_URL = "https://xnarosypsowmisjcevsi.supabase.co/storage/v1/object/pub
 export const FAQPage = ({ pageNumber, totalPageCount }: { pageNumber: number, totalPageCount: number }) => {
   const faqs = [
     {
-      q: "¿Cómo se solicitan los envíos y el seguimiento?",
-      a: "La gestión es ágil y directa vía WhatsApp. Si bien no contamos con seguimiento GPS en tiempo real para el cliente, le avisaremos inmediatamente apenas el paquete haya sido entregado.",
-      icon: <MessageCircle className="w-6 h-6 text-[#dcb35f]" />
+      q: "¿Cómo se solicitan los envíos y cómo es el seguimiento?",
+      a: "La gestión es ágil y directa vía WhatsApp. Si bien por el momento no contamos con seguimiento GPS en tiempo real para el cliente, le avisaremos inmediatamente apenas el paquete haya sido entregado.",
+      icon: <MessageCircle className="w-6 h-6 text-primary" />
     },
     {
-      q: "¿Cuáles son las modalidades de pago?",
-      a: "Nos adaptamos a su ritmo: liquidación diaria, semanal, quincenal o mensual. Para todos nuestros servicios emitimos Factura C.",
-      icon: <CreditCard className="w-6 h-6 text-[#dcb35f]" />
+      q: "¿Cuáles son las modalidades de pago y facturación?",
+      a: "Nos adaptamos a su ritmo: liquidación diaria, semanal, quincenal o mensual. Frecuencia personalizada con cada cliente. Para todos nuestros servicios emitimos Factura C.",
+      icon: <CreditCard className="w-6 h-6 text-primary" />
     },
     {
       q: "¿Qué tamaño máximo de paquetes transportan?",
-      a: "Nuestra flota es de motos. Llevamos paquetes que puedan ser trasladados de forma segura. Se aplica recargo por 'Bulto' (+5kg o 40x40x30cm).",
-      icon: <Bike className="w-6 h-6 text-[#dcb35f]" />
+      a: "Nuestra flota es exclusivamente de motos. Llevamos paquetes que puedan ser trasladados de forma segura. Se aplica recargo por 'Bulto' si supera los 5kg o 40x40x30cm.",
+      icon: <Bike className="w-6 h-6 text-primary" />
     },
     {
-      q: "¿Cómo se actualizan los niveles de descuento?",
-      a: "Depende del corte de facturación. Recomendamos el cierre Mensual para promediar sus ventas y garantizar una mejor escala tarifaria.",
-      icon: <TrendingUp className="w-6 h-6 text-[#dcb35f]" />
+      q: "¿Cómo se actualizan los niveles de descuento en E-commerce?",
+      a: "Depende del corte de facturación elegido. Recomendamos el cierre Mensual para promediar sus ventas y garantizar una mejor escala tarifaria en toda la ciudad.",
+      icon: <TrendingUp className="w-6 h-6 text-primary" />
     },
     {
-      q: "¿Qué ocurre con los retiros de bajo volumen?",
-      a: "En E-Commerce, el retiro es GRATIS superando 10 paquetes. Si es menor, el costo es de $4.000. Opcional: Modalidad 'Drop-Off' en Friuli 1972 sin cargo.",
-      icon: <Package className="w-6 h-6 text-[#dcb35f]" />
+      q: "¿Qué ocurre con los retiros (colectas) de bajo volumen?",
+      a: "En E-Commerce, el retiro es GRATIS superando 10 paquetes. Si es menor, el costo es de $4.000. Opcional: Modalidad 'Drop-Off' en nuestro depósito sin cargo adicional.",
+      icon: <Package className="w-6 h-6 text-primary" />
     }
   ];
 
   return (
-    <A4Page pageNumber={pageNumber} totalPageCount={totalPageCount} className="p-0 text-white font-['Montserrat']">
-      <div className="relative h-full flex flex-col p-10 bg-[#0a1122] bg-gradient-to-b from-[#111d38] to-[#0a1122]">
-        <header className="flex justify-between items-center mb-8 relative z-10">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center bg-[#0a1122] relative overflow-hidden">
-              <Image src={LOGO_URL} alt="Logo EDR" fill className="object-contain p-2" />
-            </div>
-            <h1 className="text-lg font-extrabold italic tracking-wider flex gap-1.5 uppercase">
-              <span className="text-white">ENVIOS</span>
-              <span className="text-[#dcb35f]">DOSRUEDAS</span>
-            </h1>
+    <A4Page pageNumber={pageNumber} totalPageCount={totalPageCount}>
+      {/* Header */}
+      <header className="flex justify-between items-center w-full pb-8 border-b border-white/5 mb-8">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-full border border-white/10 p-1 bg-background relative flex items-center justify-center">
+            <Image src={LOGO_URL} alt="Logo" fill className="object-contain p-1.5" />
           </div>
-          <div className="border border-[#dcb35f] text-[#dcb35f] rounded-full px-4 py-1 text-[10px] font-semibold tracking-wide uppercase">
-            Soporte y Condiciones
-          </div>
-        </header>
+          <h1 className="text-xl font-bold italic tracking-tighter uppercase text-white">ENVIOS <span className="text-primary">DOSRUEDAS</span></h1>
+        </div>
+        <div className="border border-primary text-primary px-5 py-2 rounded-full text-[10px] font-black tracking-[0.2em] uppercase box-glow">
+          Soporte y Condiciones
+        </div>
+      </header>
 
-        <main className="flex-grow flex flex-col relative z-10 overflow-hidden">
-          <h2 className="text-3xl font-extrabold italic tracking-wide mb-6 uppercase">
-            PREGUNTAS FRECUENTES <span className="text-gray-400 text-xl font-normal not-italic tracking-normal ml-2">(1/2)</span>
-          </h2>
+      {/* Title */}
+      <h2 className="text-4xl font-black italic tracking-tighter mb-8 uppercase text-white leading-none">
+        PREGUNTAS FRECUENTES <span className="text-muted-foreground text-2xl font-medium not-italic ml-2 tracking-normal">(1/2)</span>
+      </h2>
 
-          <div className="flex flex-col gap-4">
-            {faqs.map((faq, i) => (
-              <article 
-                key={i} 
-                className="bg-[#151e32] border border-[#243250] rounded-xl p-5 shadow-xl relative overflow-hidden group"
-              >
-                <header className="flex justify-between items-start gap-4 mb-2">
-                  <h3 className="text-[#dcb35f] font-bold text-[13px] leading-snug uppercase tracking-wide">
-                    {faq.q}
-                  </h3>
-                  <div className="flex-shrink-0 text-[#dcb35f]">
-                    {faq.icon}
-                  </div>
-                </header>
-                <p className="text-gray-300 text-[12px] leading-relaxed font-medium">
-                  {faq.a}
-                </p>
-              </article>
-            ))}
-          </div>
-        </main>
+      {/* List */}
+      <div className="flex flex-col gap-5 flex-grow">
+        {faqs.map((faq, i) => (
+          <article key={i} className="bg-card/50 border border-white/5 rounded-2xl p-6 shadow-xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12 blur-2xl group-hover:bg-primary/10 transition-colors" />
+            <header className="flex justify-between items-start gap-4 mb-3 relative z-10">
+              <h3 className="text-primary font-black text-[14px] leading-snug uppercase tracking-wide italic pr-6">
+                {faq.q}
+              </h3>
+              <div className="flex-shrink-0">{faq.icon}</div>
+            </header>
+            <p className="text-muted-foreground text-xs leading-relaxed font-medium italic relative z-10 max-w-2xl">
+              {faq.a}
+            </p>
+          </article>
+        ))}
       </div>
     </A4Page>
   );
