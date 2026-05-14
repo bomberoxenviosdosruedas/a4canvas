@@ -8,6 +8,7 @@ import { FlexServicePage } from '@/components/pages/FlexServicePage';
 import { EcommerceServicePage } from '@/components/pages/EcommerceServicePage';
 import { Ecommerce24Page } from '@/components/pages/Ecommerce24Page';
 import { FlexibleAccountPage } from '@/components/pages/FlexibleAccountPage';
+import { ComparisonPage } from '@/components/pages/ComparisonPage';
 import { Button } from '@/components/ui/button';
 import { Printer, Package } from 'lucide-react';
 
@@ -20,6 +21,7 @@ export default function A4CanvasApp() {
     { id: 'p5', type: 'ecommerce' },
     { id: 'p6', type: 'ecommerce24' },
     { id: 'p7', type: 'flexible-account' },
+    { id: 'p8', type: 'comparison' },
   ]);
 
   const handlePrint = () => {
@@ -69,6 +71,7 @@ export default function A4CanvasApp() {
             {page.type === 'ecommerce' && <EcommerceServicePage pageNumber={index + 1} totalPageCount={11} />}
             {page.type === 'ecommerce24' && <Ecommerce24Page pageNumber={index + 1} totalPageCount={11} />}
             {page.type === 'flexible-account' && <FlexibleAccountPage pageNumber={index + 1} totalPageCount={11} />}
+            {page.type === 'comparison' && <ComparisonPage pageNumber={index + 1} totalPageCount={11} />}
           </div>
         ))}
       </main>
