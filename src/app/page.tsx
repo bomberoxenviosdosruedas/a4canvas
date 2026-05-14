@@ -9,6 +9,7 @@ import { EcommerceServicePage } from '@/components/pages/EcommerceServicePage';
 import { Ecommerce24Page } from '@/components/pages/Ecommerce24Page';
 import { FlexibleAccountPage } from '@/components/pages/FlexibleAccountPage';
 import { ComparisonPage } from '@/components/pages/ComparisonPage';
+import { FAQPage } from '@/components/pages/FAQPage';
 import { Button } from '@/components/ui/button';
 import { Printer, Package } from 'lucide-react';
 
@@ -22,11 +23,14 @@ export default function A4CanvasApp() {
     { id: 'p6', type: 'ecommerce24' },
     { id: 'p7', type: 'flexible-account' },
     { id: 'p8', type: 'comparison' },
+    { id: 'p9', type: 'faq' },
   ]);
 
   const handlePrint = () => {
     window.print();
   };
+
+  const totalPages = 11;
 
   return (
     <div className="min-h-screen bg-[#000f1d] pb-20 overflow-x-hidden selection:bg-[#ffc107] selection:text-[#011525]">
@@ -42,7 +46,7 @@ export default function A4CanvasApp() {
             </h1>
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-[#ffc107] animate-pulse" />
-              <p className="text-[10px] text-[#ffc107]/80 uppercase tracking-[0.4em] font-bold font-mono">Página {pages.length} de 11 / 2026</p>
+              <p className="text-[10px] text-[#ffc107]/80 uppercase tracking-[0.4em] font-bold font-mono">Página {pages.length} de {totalPages} / 2026</p>
             </div>
           </div>
         </div>
@@ -64,14 +68,15 @@ export default function A4CanvasApp() {
       <main className="flex flex-col items-center pt-32">
         {pages.map((page, index) => (
           <div key={page.id} className="relative mb-10">
-            {page.type === 'cover' && <CoverPage pageNumber={index + 1} totalPageCount={11} />}
-            {page.type === 'express' && <ExpressServicePage pageNumber={index + 1} totalPageCount={11} />}
-            {page.type === 'lowcost' && <LowcostServicePage pageNumber={index + 1} totalPageCount={11} />}
-            {page.type === 'flex' && <FlexServicePage pageNumber={index + 1} totalPageCount={11} />}
-            {page.type === 'ecommerce' && <EcommerceServicePage pageNumber={index + 1} totalPageCount={11} />}
-            {page.type === 'ecommerce24' && <Ecommerce24Page pageNumber={index + 1} totalPageCount={11} />}
-            {page.type === 'flexible-account' && <FlexibleAccountPage pageNumber={index + 1} totalPageCount={11} />}
-            {page.type === 'comparison' && <ComparisonPage pageNumber={index + 1} totalPageCount={11} />}
+            {page.type === 'cover' && <CoverPage pageNumber={index + 1} totalPageCount={totalPages} />}
+            {page.type === 'express' && <ExpressServicePage pageNumber={index + 1} totalPageCount={totalPages} />}
+            {page.type === 'lowcost' && <LowcostServicePage pageNumber={index + 1} totalPageCount={totalPages} />}
+            {page.type === 'flex' && <FlexServicePage pageNumber={index + 1} totalPageCount={totalPages} />}
+            {page.type === 'ecommerce' && <EcommerceServicePage pageNumber={index + 1} totalPageCount={totalPages} />}
+            {page.type === 'ecommerce24' && <Ecommerce24Page pageNumber={index + 1} totalPageCount={totalPages} />}
+            {page.type === 'flexible-account' && <FlexibleAccountPage pageNumber={index + 1} totalPageCount={totalPages} />}
+            {page.type === 'comparison' && <ComparisonPage pageNumber={index + 1} totalPageCount={totalPages} />}
+            {page.type === 'faq' && <FAQPage pageNumber={index + 1} totalPageCount={totalPages} />}
           </div>
         ))}
       </main>
